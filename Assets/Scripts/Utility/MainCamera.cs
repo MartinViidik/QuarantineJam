@@ -11,6 +11,8 @@ public class MainCamera : MonoBehaviour
             if (hitCollider.CompareTag("Door"))
             {
                 hitCollider.GetComponent<Door>().SelectDoor();
+            } else {
+                return;
             }
         }
     }

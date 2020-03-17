@@ -12,14 +12,18 @@ public class Door : MonoBehaviour
     }
     public void StartOpening()
     {
+        open = true;
         renderer.color = Color.red;
         StartCoroutine(DoorOpen());
-        open = true;
     }
 
     public void SelectDoor()
     {
-        CloseDoor();
+        if (open)
+        {
+            Score.Instance.UpdateScore(10);
+            CloseDoor();
+        }
     }
 
     void CloseDoor()
@@ -31,7 +35,10 @@ public class Door : MonoBehaviour
     public IEnumerator DoorOpen()
     {
         yield return new WaitForSeconds(1f);
-        CloseDoor();
-        Debug.Log("Take points");
+        if (open)
+        {
+            Score.Instance.UpdateScore(-10);
+            CloseDoor();
+        }
     }
 }

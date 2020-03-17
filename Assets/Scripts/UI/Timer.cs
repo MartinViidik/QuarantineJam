@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(StartCountdown(2));
+        StartCoroutine(StartCountdown(20));
     }
 
     public void SceneChanged()

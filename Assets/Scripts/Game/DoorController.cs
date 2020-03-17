@@ -37,10 +37,6 @@ public class DoorController : MonoBehaviour
         {
             yield return new WaitForSeconds(cooldown);
             GetRandomDoor(1);
-            if(amount == 10)
-            {
-                GetRandomDoor(2);
-            }
         }
     }
 
