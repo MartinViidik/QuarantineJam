@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour
             timer_text.text = currCountdownValue.ToString();
         }
     }
-    public IEnumerator StartCountdown(int countdownValue = 5)
+    public IEnumerator StartCountdown(int countdownValue)
     {
         counting = true;
         currCountdownValue = countdownValue;
@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(StartCountdown(5));
+        StartCoroutine(StartCountdown(2));
     }
 
     public void SceneChanged()
