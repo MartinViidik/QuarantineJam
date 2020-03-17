@@ -38,11 +38,17 @@ public class Timer : MonoBehaviour
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(StartCountdown(20));
+        StartCoroutine(StartCountdown(1));
     }
 
     public void SceneChanged()
     {
         StartCoroutine(NewScene());
+    }
+
+    public void StopTimer()
+    {
+        StopAllCoroutines();
+        counting = false;
     }
 }

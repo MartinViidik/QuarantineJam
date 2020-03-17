@@ -18,13 +18,11 @@ public class Scenemanager : MonoBehaviour
     void Start()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         if (available_scenes.Count == 0)
         {
             available_scenes = new List<int>(game_scenes);
-            Debug.Log(available_scenes.Count);
         }
     }
 
@@ -37,7 +35,6 @@ public class Scenemanager : MonoBehaviour
         }
 
         _instance = this;
-        Debug.Log(GameScene.buildIndex);
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -54,7 +51,6 @@ public class Scenemanager : MonoBehaviour
         }
         sceneIndex = available_scenes[Random.Range(0, available_scenes.Count)];
         available_scenes.Remove(sceneIndex);
-        Debug.Log(sceneIndex);
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
     }
 
@@ -68,11 +64,6 @@ public class Scenemanager : MonoBehaviour
         }
     }
 
-    private void OnSceneUnloaded(Scene current)
-    {
-        Debug.Log("OnSceneUnloaded: " + current);
-    }
-
     public void LoadUI()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
@@ -81,7 +72,7 @@ public class Scenemanager : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Scene loaded: " + scene.buildIndex);
-        if(scene.buildIndex != 2)
+        if(scene.buildIndex >= 1)
         {
             GameObject.Find("GameUI").GetComponent<Timer>().SceneChanged();
         }
@@ -91,6 +82,7 @@ public class Scenemanager : MonoBehaviour
     {
         sceneIndex = 0;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
+        Destroy(GameObject.Find("GameUI"));
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
         available_scenes = new List<int>(game_scenes);
     }
