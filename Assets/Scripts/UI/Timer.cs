@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
@@ -12,7 +12,9 @@ public class Timer : MonoBehaviour
         if (!counting)
         {
             timer_text.text = "";
-        } else {
+        }
+        else
+        {
             timer_text.text = currCountdownValue.ToString();
         }
     }

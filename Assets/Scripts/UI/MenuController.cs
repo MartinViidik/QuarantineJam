@@ -7,5 +7,6 @@ public class MenuController : MonoBehaviour
         Scenemanager.Instance.unloadScene(2);
         Scenemanager.Instance.loadScene();
         Scenemanager.Instance.LoadUI();
+        Background.Instance.StartTransition();
     }
 }

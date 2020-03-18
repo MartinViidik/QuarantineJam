@@ -52,6 +52,7 @@ public class Scenemanager : MonoBehaviour
         sceneIndex = available_scenes[Random.Range(0, available_scenes.Count)];
         available_scenes.Remove(sceneIndex);
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
+        Background.Instance.StartTransition();
     }
 
     public void unloadScene(int index)
@@ -62,6 +63,7 @@ public class Scenemanager : MonoBehaviour
         } else {
             SceneManager.UnloadSceneAsync(GameScene.buildIndex);
         }
+        Background.Instance.StartTransition();
     }
 
     public void LoadUI()
