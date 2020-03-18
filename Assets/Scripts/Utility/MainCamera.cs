@@ -21,6 +21,11 @@ public class MainCamera : MonoBehaviour
                 rubTarget = hitCollider.gameObject;
                 rubbing = true;
             }
+            if (hitCollider.CompareTag("DirtyHand"))
+            {
+                Debug.Log("test");
+                hitCollider.GetComponent<DirtyHand>().MoveBack();
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {

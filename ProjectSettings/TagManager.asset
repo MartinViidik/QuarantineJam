@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - Hand
+  - DirtyHand
   layers:
   - Default
   - TransparentFX
