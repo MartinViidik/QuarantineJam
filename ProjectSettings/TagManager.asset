@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Door
+  - Hand
   layers:
   - Default
   - TransparentFX
