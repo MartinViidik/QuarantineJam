@@ -5,6 +5,7 @@ public class Hand : MonoBehaviour
 {
     public bool selected;
     public Vector3 inputPOS;
+    bool handEnabled;
 
     public void GetRubbed()
     {
@@ -12,6 +13,11 @@ public class Hand : MonoBehaviour
         {
             StartCoroutine(RubCoroutine());
         }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(InitialDelay());
     }
 
     private IEnumerator RubCoroutine()
@@ -32,5 +38,13 @@ public class Hand : MonoBehaviour
     private void Update()
     {
         Debug.Log(inputPOS);
+    }
+
+    private IEnumerator InitialDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Objective.Instance.UpdateObjective("Wash your hands!");
+        yield return new WaitForSeconds(3f);
+        handEnabled = true;
     }
 }

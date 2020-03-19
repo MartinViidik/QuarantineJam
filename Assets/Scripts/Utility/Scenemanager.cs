@@ -82,10 +82,9 @@ public class Scenemanager : MonoBehaviour
     {
         sceneIndex = 2;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
-        Destroy(GameObject.Find("GameUI"));
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
+        Destroy(GameObject.Find("GameUI"));
         RefreshScenes();
-        Transition.Instance.SetState(1, "out");
     }
 
     public void StartGame()

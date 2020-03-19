@@ -39,7 +39,7 @@ public class Timer : MonoBehaviour
 
     public IEnumerator NewScene()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(5f);
         StartCoroutine(StartCountdown(5));
     }
 

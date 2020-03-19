@@ -14,7 +14,7 @@ public class DoorController : MonoBehaviour
         {
             doors.Add(t.gameObject.GetComponent<Door>());
         }
-        StartCoroutine(StartDoors(cooldown));
+        StartCoroutine(InitialDelay());
     }
 
     void GetRandomDoor(int amount)
@@ -33,6 +33,14 @@ public class DoorController : MonoBehaviour
             yield return new WaitForSeconds(cooldown);
             GetRandomDoor(1);
         }
+    }
+
+    private IEnumerator InitialDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Objective.Instance.UpdateObjective("Stay indoors!");
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(StartDoors(cooldown));
     }
 
 }

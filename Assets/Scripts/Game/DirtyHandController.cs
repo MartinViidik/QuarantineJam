@@ -14,7 +14,8 @@ public class DirtyHandController : MonoBehaviour
             GameObject _dirtyHand = Instantiate(dirtyHand, transform);
             _dirtyHand.SetActive(false);
         }
-        StartCoroutine(SpawnHand());
+
+        StartCoroutine(InitialDelay());
     }
 
     public IEnumerator SpawnHand()
@@ -36,6 +37,14 @@ public class DirtyHandController : MonoBehaviour
     void EnableHand(DirtyHand hand)
     {
         hand.gameObject.SetActive(true);
+    }
+
+    private IEnumerator InitialDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Objective.Instance.UpdateObjective("Don't touch your face!");
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(SpawnHand());
     }
 
 }
