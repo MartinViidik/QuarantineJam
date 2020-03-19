@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,16 +14,15 @@ public class Scenemanager : MonoBehaviour
 
     public List<int> game_scenes = new List<int>();
     public List<int> available_scenes;
-    private int sceneIndex = 0;
+    private int sceneIndex = 2;
 
     void Start()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
         SceneManager.sceneLoaded += OnSceneLoaded;
-
         if (available_scenes.Count == 0)
         {
-            available_scenes = new List<int>(game_scenes);
+            RefreshScenes();
         }
     }
 
@@ -40,10 +40,6 @@ public class Scenemanager : MonoBehaviour
 
     public void loadScene()
     {
-        if(sceneIndex != 0)
-        {
-            unloadScene(sceneIndex);
-        }
         if(available_scenes.Count == 0)
         {
             ReturnToMenu();
@@ -52,18 +48,15 @@ public class Scenemanager : MonoBehaviour
         sceneIndex = available_scenes[Random.Range(0, available_scenes.Count)];
         available_scenes.Remove(sceneIndex);
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
-        Background.Instance.StartTransition();
     }
 
     public void unloadScene(int index)
     {
+        Debug.Log(sceneIndex);
         if(GameScene.buildIndex <= 0)
         {
             SceneManager.UnloadSceneAsync(index);
-        } else {
-            SceneManager.UnloadSceneAsync(GameScene.buildIndex);
         }
-        Background.Instance.StartTransition();
     }
 
     public void LoadUI()
@@ -71,21 +64,48 @@ public class Scenemanager : MonoBehaviour
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
 
+    void RefreshScenes()
+    {
+        available_scenes = new List<int>(game_scenes);
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("Scene loaded: " + scene.buildIndex);
-        if(scene.buildIndex >= 1)
+        if(scene.buildIndex > 2)
         {
             GameObject.Find("GameUI").GetComponent<Timer>().SceneChanged();
         }
     }
 
+
     void ReturnToMenu()
     {
-        sceneIndex = 0;
+        sceneIndex = 2;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
         Destroy(GameObject.Find("GameUI"));
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
-        available_scenes = new List<int>(game_scenes);
+        RefreshScenes();
+        Transition.Instance.SetState(1, "out");
+    }
+
+    public void StartGame()
+    {
+        LoadUI();
+        StartTransition();
+    }
+    
+    public void StartTransition()
+    {
+        StartCoroutine(DelayTransition());
+    }
+
+    private IEnumerator DelayTransition()
+    {
+        Transition.Instance.SetState(0, "in");
+        yield return new WaitForSeconds(0.45f);
+        unloadScene(sceneIndex);
+        loadScene();
+        yield return new WaitForSeconds(0.25f);
+        Transition.Instance.SetState(1, "out");
     }
 }

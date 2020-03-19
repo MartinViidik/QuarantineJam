@@ -34,12 +34,12 @@ public class Timer : MonoBehaviour
     public IEnumerator StopCountdown()
     {
         yield return new WaitForSeconds(1.0f);
-        Scenemanager.Instance.loadScene();
+        Scenemanager.Instance.StartTransition();
     }
 
     public IEnumerator NewScene()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         StartCoroutine(StartCountdown(5));
     }
 

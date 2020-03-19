@@ -26,11 +26,6 @@ public class DoorController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Debug.Log(cooldown);
-    }
-
     public IEnumerator StartDoors(float cooldown)
     {
         while (true)
