@@ -15,6 +15,7 @@ public class Scenemanager : MonoBehaviour
     public List<int> game_scenes = new List<int>();
     public List<int> available_scenes;
     private int sceneIndex = 2;
+    bool gameOver;
 
     void Start()
     {
@@ -42,12 +43,12 @@ public class Scenemanager : MonoBehaviour
     {
         if(available_scenes.Count == 0)
         {
-            ReturnToMenu();
-            return;
+            GameOver();
+        } else {
+            sceneIndex = available_scenes[Random.Range(0, available_scenes.Count)];
+            available_scenes.Remove(sceneIndex);
+            SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
         }
-        sceneIndex = available_scenes[Random.Range(0, available_scenes.Count)];
-        available_scenes.Remove(sceneIndex);
-        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
     }
 
     public void unloadScene(int index)
@@ -78,12 +79,12 @@ public class Scenemanager : MonoBehaviour
     }
 
 
-    void ReturnToMenu()
+    public void ReturnToMenu()
     {
         sceneIndex = 2;
         SceneManager.LoadScene(0, LoadSceneMode.Single);
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
-        Destroy(GameObject.Find("GameUI"));
+        Score.Instance.ResetScore();
         RefreshScenes();
     }
 
@@ -91,6 +92,22 @@ public class Scenemanager : MonoBehaviour
     {
         LoadUI();
         StartTransition();
+    }
+
+    public void Retry()
+    {
+        Score.Instance.ResetScore();
+        gameOver = false;
+        sceneIndex = 0;
+        RefreshScenes();
+        StartTransition();
+    }
+
+    void GameOver()
+    {
+        gameOver = true;
+        SceneManager.UnloadSceneAsync(sceneIndex);
+        Score.Instance.HideScore(true);
     }
     
     public void StartTransition()
@@ -102,9 +119,15 @@ public class Scenemanager : MonoBehaviour
     {
         Transition.Instance.SetState(0, "in");
         yield return new WaitForSeconds(0.45f);
-        unloadScene(sceneIndex);
-        loadScene();
-        yield return new WaitForSeconds(0.25f);
-        Transition.Instance.SetState(1, "out");
+        if(sceneIndex > 2)
+        {
+            unloadScene(sceneIndex);
+        } 
+        if (!gameOver)
+        {
+            loadScene();
+            yield return new WaitForSeconds(0.25f);
+            Transition.Instance.SetState(1, "out");
+        }
     }
 }

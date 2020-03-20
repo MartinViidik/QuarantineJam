@@ -26,7 +26,6 @@ public class Transition : MonoBehaviour
     {
         blit = GetComponent<SimpleBlit>();
         blit.TransitionMaterial.SetFloat("_Fade", 1);
-        fadeState = "in";
     }
     void Update()
     {
@@ -57,5 +56,11 @@ public class Transition : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         fadeState = newState;
+    }
+
+    public void SetCutoff(float val)
+    {
+        StopAllCoroutines();
+        blit.TransitionMaterial.SetFloat("_Cutoff", val);
     }
 }
