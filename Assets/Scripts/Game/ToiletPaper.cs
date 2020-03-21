@@ -2,9 +2,10 @@
 
 public class ToiletPaper : MonoBehaviour
 {
+    float speed = 15;
     void Update()
     {
-        transform.localPosition += Vector3.up * 0.35f;
+        transform.localPosition += Vector3.up * Time.deltaTime * speed;
         if(transform.localPosition.y > 6)
         {
             gameObject.SetActive(false);
@@ -25,6 +26,7 @@ public class ToiletPaper : MonoBehaviour
             if (!cart.fullCart)
             {
                 Score.Instance.UpdateScore(10);
+                cart.SetState(true);
             } else {
                 Score.Instance.UpdateScore(-10);
             }

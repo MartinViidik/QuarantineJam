@@ -5,12 +5,12 @@ public class Cart : MonoBehaviour
     public bool activated;
     public bool fullCart;
     Vector3 initialPosition;
-    float speed;
+    float speed = 100;
     public SpriteRenderer renderer;
     private void Start()
     {
         SetSpeed();
-        SetState();
+        SetState(GetState());
         initialPosition = transform.localPosition;
     }
     private void Awake()
@@ -31,7 +31,7 @@ public class Cart : MonoBehaviour
     void ReturnToStart()
     {
         SetSpeed();
-        SetState();
+        SetState(GetState());
         transform.localPosition = initialPosition;
     }
 
@@ -39,17 +39,28 @@ public class Cart : MonoBehaviour
     {
         speed = Random.Range(3, 4);
     }
-    void SetState()
+    public void SetState(bool state)
     {
-        float RNG = Random.Range(0, 10);
-        Debug.Log(RNG);
-        if(RNG % 2 == 0)
+        if(state == true)
         {
             fullCart = true;
             SetColor(Color.red);
         } else {
             fullCart = false;
             SetColor(Color.white);
+        }
+    }
+    bool GetState()
+    {
+        float RNG = Random.Range(0, 10);
+        Debug.Log(RNG);
+        if (RNG % 2 == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
     void SetColor(Color color)
