@@ -6,7 +6,7 @@ public class Score : MonoBehaviour
 {
     public TMP_Text score_text;
     public float score = 0;
-    private float lastScore;
+
     private static Score _instance;
     public GameObject scoreIndicator;
     public TMP_Text scoreIndicatortext;
@@ -32,7 +32,7 @@ public class Score : MonoBehaviour
 
     public void UpdateScore(float amount)
     {
-        lastScore = amount;
+        SetIndicatorText(amount);
         score += amount;
         score_text.text = score.ToString();
         Debug.Log(score);
@@ -43,16 +43,8 @@ public class Score : MonoBehaviour
         if (!scoreIndicator.activeInHierarchy)
         {
             scoreIndicator.SetActive(true);
-            SetIndicatorText();
             scoreIndicator.transform.position = InputPosition;
-            StartCoroutine(DisableIndicator());
         }
-    }
-
-    private IEnumerator DisableIndicator()
-    {
-        yield return new WaitForSeconds(0.25f);
-        scoreIndicator.SetActive(false);
     }
 
     private IEnumerator FinalScoreCounter()
@@ -91,8 +83,8 @@ public class Score : MonoBehaviour
         score = 0;
     }
 
-    void SetIndicatorText()
+    void SetIndicatorText(float amount)
     {
-        scoreIndicatortext.text = "+" + lastScore.ToString();
+        scoreIndicatortext.text = "+" + amount.ToString();
     }
 }
