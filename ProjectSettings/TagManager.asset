@@ -7,6 +7,7 @@ TagManager:
   - Door
   - Hand
   - DirtyHand
+  - Cart
   layers:
   - Default
   - TransparentFX

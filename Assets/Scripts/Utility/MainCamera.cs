@@ -2,9 +2,25 @@
 
 public class MainCamera : MonoBehaviour
 {
+    private static MainCamera _instance;
     GameObject rubTarget;
     Vector3 pos;
     bool rubbing;
+    public static MainCamera Instance
+    {
+        get { return _instance; }
+    }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -59,5 +75,11 @@ public class MainCamera : MonoBehaviour
             rubTarget.GetComponent<Hand>().inputPOS = pos;
             rubTarget.GetComponent<Hand>().GetRubbed();
         }
+    }
+
+    public Vector3 ReturnMousePosition()
+    {
+        Vector3 position = Input.mousePosition;
+        return Camera.main.ScreenToWorldPoint(pos);
     }
 }
