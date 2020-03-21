@@ -25,7 +25,7 @@ public class Transition : MonoBehaviour
     void Start()
     {
         blit = GetComponent<SimpleBlit>();
-        blit.TransitionMaterial.SetFloat("_Fade", 1);
+        fadeState = "out";
     }
     void Update()
     {
