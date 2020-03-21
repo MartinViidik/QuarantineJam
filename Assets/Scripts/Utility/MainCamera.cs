@@ -13,7 +13,13 @@ public class MainCamera : MonoBehaviour
             Collider2D hitCollider = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pos));
             if (hitCollider.CompareTag("Door"))
             {
-                hitCollider.GetComponent<Door>().SelectDoor();
+                Door door = hitCollider.GetComponent<Door>();
+                if (door.open)
+                {
+                    door.SelectDoor();
+                    Score.Instance.ShowIndicator(Input.mousePosition);
+                }
+                
             }
             if (hitCollider.CompareTag("Hand"))
             {
@@ -25,6 +31,8 @@ public class MainCamera : MonoBehaviour
             {
                 Debug.Log("test");
                 hitCollider.GetComponent<DirtyHand>().MoveBack();
+                pos = Input.mousePosition;
+                Score.Instance.ShowIndicator(Input.mousePosition);
             }
         }
         if (Input.GetMouseButtonUp(0))

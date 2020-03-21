@@ -35,11 +35,6 @@ public class Hand : MonoBehaviour
         StopAllCoroutines();
     }
 
-    private void Update()
-    {
-        Debug.Log(inputPOS);
-    }
-
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);

@@ -19,11 +19,8 @@ public class Door : MonoBehaviour
 
     public void SelectDoor()
     {
-        if (open)
-        {
-            Score.Instance.UpdateScore(10);
-            CloseDoor();
-        }
+        Score.Instance.UpdateScore(10);
+        CloseDoor();
     }
 
     void CloseDoor()
