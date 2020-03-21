@@ -21,9 +21,15 @@ public class ToiletPaper : MonoBehaviour
     {
         if (collision.gameObject.tag == "Cart")
         {
+            Cart cart = collision.gameObject.GetComponent<Cart>();
+            if (!cart.fullCart)
+            {
+                Score.Instance.UpdateScore(10);
+            } else {
+                Score.Instance.UpdateScore(-10);
+            }
+            Score.Instance.ShowIndicator(cart.transform.position);
             gameObject.SetActive(false);
-            Score.Instance.UpdateScore(10);
-            Score.Instance.ShowIndicator(transform.localPosition);
         }
     }
 }

@@ -496,6 +496,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activated: 0
+  fullCart: 0
+  renderer: {fileID: 855148154}
 --- !u!212 &855148154
 SpriteRenderer:
   m_ObjectHideFlags: 0
