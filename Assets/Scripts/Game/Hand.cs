@@ -6,6 +6,8 @@ public class Hand : MonoBehaviour
     public bool selected;
     public Vector3 inputPOS;
     bool handEnabled;
+    public Animator anim;
+    public GameObject foam;
 
     public void GetRubbed()
     {
@@ -23,6 +25,8 @@ public class Hand : MonoBehaviour
     private IEnumerator RubCoroutine()
     {
         selected = true;
+        SetWashingAnimation(true);
+        foam.SetActive(true);
         yield return new WaitForSeconds(0.25f);
         Score.Instance.UpdateScore(1);
         Score.Instance.ShowIndicator(inputPOS);
@@ -33,6 +37,8 @@ public class Hand : MonoBehaviour
     {
         selected = false;
         StopAllCoroutines();
+        SetWashingAnimation(false);
+        foam.SetActive(false);
     }
 
     private IEnumerator InitialDelay()
@@ -41,5 +47,10 @@ public class Hand : MonoBehaviour
         Objective.Instance.UpdateObjective("Wash your hands!");
         yield return new WaitForSeconds(3f);
         handEnabled = true;
+    }
+
+    void SetWashingAnimation(bool state)
+    {
+        anim.SetBool("Washing", state);
     }
 }
