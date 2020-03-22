@@ -118,7 +118,7 @@ public class Scenemanager : MonoBehaviour
     private IEnumerator DelayTransition()
     {
         Transition.Instance.SetState(0, "in");
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(1f);
         if(sceneIndex > 2)
         {
             unloadScene(sceneIndex);
