@@ -6,16 +6,18 @@ public class Cart : MonoBehaviour
     public bool fullCart;
     Vector3 initialPosition;
     float speed = 100;
-    public SpriteRenderer renderer;
+    public GameObject full;
+    SpriteRenderer renderer;
     private void Start()
     {
         SetSpeed();
         SetState(GetState());
         initialPosition = transform.localPosition;
     }
+
     private void Awake()
     {
-        renderer = renderer.GetComponent<SpriteRenderer>();
+        renderer = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -44,10 +46,12 @@ public class Cart : MonoBehaviour
         if(state == true)
         {
             fullCart = true;
-            SetColor(Color.red);
+            full.SetActive(true);
+            renderer.color = Color.red;
         } else {
             fullCart = false;
-            SetColor(Color.white);
+            full.SetActive(false);
+            renderer.color = Color.green;
         }
     }
     bool GetState()
@@ -62,9 +66,5 @@ public class Cart : MonoBehaviour
         {
             return false;
         }
-    }
-    void SetColor(Color color)
-    {
-        renderer.material.color = color;
     }
 }

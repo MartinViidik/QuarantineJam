@@ -12,7 +12,7 @@ public class DirtyHand : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.localPosition, targ, speed * Time.deltaTime * 3);
         dist = Vector3.Distance(targ, transform.localPosition);
-        if (dist <= 6)
+        if (dist <= 4)
         {
             Score.Instance.UpdateScore(-25);
             gameObject.SetActive(false);
