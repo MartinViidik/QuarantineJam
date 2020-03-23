@@ -35,7 +35,7 @@ public class Score : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void UpdateScore(float amount)
+    public void UpdateScore(float amount, Vector3 inputPosition, bool mouse)
     {
         if(amount >= 0)
         {
@@ -46,6 +46,7 @@ public class Score : MonoBehaviour
         SetIndicatorText(amount);
         score += amount;
         score_text.text = score.ToString();
+        ShowIndicator(inputPosition, mouse);
     }
 
     public void ShowIndicator(Vector3 InputPosition, bool mouse)

@@ -14,7 +14,7 @@ public class DirtyHand : MonoBehaviour
         dist = Vector3.Distance(targ, transform.localPosition);
         if (dist <= 4)
         {
-            Score.Instance.UpdateScore(-25);
+            Score.Instance.UpdateScore(-25, transform.localPosition, false);
             gameObject.SetActive(false);
         }
     }
@@ -59,7 +59,7 @@ public class DirtyHand : MonoBehaviour
     public void MoveBack()
     {
         gameObject.SetActive(false);
-        Score.Instance.UpdateScore(15);
+        Score.Instance.UpdateScore(15, Input.mousePosition, true);
     }
 
 }

@@ -13,9 +13,12 @@ public class Person : MonoBehaviour
     public DistanceController controller;
     Vector3 startPosition;
     PersonState _state;
+    public AudioClip[] grunts;
+    private AudioSource ac;
     private void Start()
     {
         startPosition = transform.localPosition;
+        ac = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -70,13 +73,21 @@ public class Person : MonoBehaviour
     {
         if(_state != PersonState.Retreating)
         {
+            Grunt();
             _state = PersonState.Retreating;
-            Score.Instance.UpdateScore(5);
-            Score.Instance.ShowIndicator(transform.localPosition, false);
+            Score.Instance.UpdateScore(5, transform.localPosition, false);
         }
     }
     public void SetMoving()
     {
         _state = PersonState.Moving;
+    }
+    void Grunt()
+    {
+        if (!ac.isPlaying)
+        {
+            int i = Random.Range(0, grunts.Length);
+            ac.PlayOneShot(grunts[i], Random.Range(3, 3.25f));
+        }
     }
 }

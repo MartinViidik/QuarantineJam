@@ -38,7 +38,7 @@ public class DistanceController : MonoBehaviour
     private IEnumerator TalkingDelay()
     {
         yield return new WaitForSeconds(0.15f);
-        Score.Instance.UpdateScore(-25);
+        Score.Instance.UpdateScore(-25, new Vector3(0, 0, 0), false);
         yield return new WaitForSeconds(0.5f);
         timer = false;
     }

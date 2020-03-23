@@ -29,7 +29,7 @@ public class Door : MonoBehaviour
 
     public void SelectDoor()
     {
-        Score.Instance.UpdateScore(10);
+        Score.Instance.UpdateScore(10, Input.mousePosition, true);
         CloseDoor();
     }
 
@@ -45,8 +45,7 @@ public class Door : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (open)
         {
-            Score.Instance.UpdateScore(-10);
-            Score.Instance.ShowIndicator(transform.localPosition, false);
+            Score.Instance.UpdateScore(-10, transform.localPosition, false);
             CloseDoor();
         }
     }

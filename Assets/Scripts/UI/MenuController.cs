@@ -12,6 +12,9 @@ public class MenuController : MonoBehaviour
     {
         get { return _instance; }
     }
+
+    public AudioClip confirmSFX;
+    private AudioSource ac;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -22,6 +25,7 @@ public class MenuController : MonoBehaviour
 
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
+        ac = GetComponent<AudioSource>();
     }
 
     public void OnEnable()
@@ -32,17 +36,13 @@ public class MenuController : MonoBehaviour
     public void PlayGame()
     {
         Scenemanager.Instance.StartGame();
+        PlaySound();
         SetButtons(false);
     }
     public void Retry()
     {
         Scenemanager.Instance.Retry();
-        SetButtons(false);
-    }
-
-    public void ToMenu()
-    {
-        Scenemanager.Instance.ReturnToMenu();
+        PlaySound();
         SetButtons(false);
     }
 
@@ -64,5 +64,10 @@ public class MenuController : MonoBehaviour
     {
         play.SetActive(state);
         retry.SetActive(state);
+    }
+
+    void PlaySound()
+    {
+        ac.PlayOneShot(confirmSFX);
     }
 }

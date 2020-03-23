@@ -28,8 +28,9 @@ public class Cart : MonoBehaviour
             {
                 if (fullCart)
                 {
-                    Score.Instance.UpdateScore(5f);
-                    Score.Instance.ShowIndicator(new Vector3(0, 0, 0), false);
+                    Score.Instance.UpdateScore(5f, new Vector3(0, 0, 0), false);
+                } else {
+                    Score.Instance.UpdateScore(-10f, new Vector3(0, 0, 0), false);
                 }
                 ReturnToStart();
             }

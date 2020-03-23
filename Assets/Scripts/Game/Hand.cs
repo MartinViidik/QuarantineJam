@@ -35,8 +35,7 @@ public class Hand : MonoBehaviour
         ac.volume = 0.5f;
         foam.SetActive(true);
         yield return new WaitForSeconds(0.25f);
-        Score.Instance.UpdateScore(1);
-        Score.Instance.ShowIndicator(inputPOS, true);
+        Score.Instance.UpdateScore(1, inputPOS, true);
         selected = false;
     }
 
