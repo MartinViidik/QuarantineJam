@@ -8,6 +8,7 @@ public class Hand : MonoBehaviour
     bool handEnabled;
     public Animator anim;
     public GameObject foam;
+    private AudioSource ac;
 
     public void GetRubbed()
     {
@@ -15,6 +16,11 @@ public class Hand : MonoBehaviour
         {
             StartCoroutine(RubCoroutine());
         }
+    }
+
+    private void Awake()
+    {
+        ac = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -26,15 +32,17 @@ public class Hand : MonoBehaviour
     {
         selected = true;
         SetWashingAnimation(true);
+        ac.volume = 0.5f;
         foam.SetActive(true);
         yield return new WaitForSeconds(0.25f);
         Score.Instance.UpdateScore(1);
-        Score.Instance.ShowIndicator(inputPOS);
+        Score.Instance.ShowIndicator(inputPOS, true);
         selected = false;
     }
 
     public void StopRubbing()
     {
+        ac.volume = 0;
         selected = false;
         StopAllCoroutines();
         SetWashingAnimation(false);

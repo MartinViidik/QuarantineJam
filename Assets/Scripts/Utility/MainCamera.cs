@@ -33,7 +33,7 @@ public class MainCamera : MonoBehaviour
                 if (door.open)
                 {
                     door.SelectDoor();
-                    Score.Instance.ShowIndicator(Input.mousePosition);
+                    Score.Instance.ShowIndicator(Input.mousePosition, true);
                 }
                 
             }
@@ -48,7 +48,11 @@ public class MainCamera : MonoBehaviour
                 Debug.Log("test");
                 hitCollider.GetComponent<DirtyHand>().MoveBack();
                 pos = Input.mousePosition;
-                Score.Instance.ShowIndicator(Input.mousePosition);
+                Score.Instance.ShowIndicator(Input.mousePosition, true);
+            }
+            if (hitCollider.CompareTag("Person"))
+            {
+                hitCollider.GetComponent<Person>().SetRetreating();
             }
         }
         if (Input.GetMouseButtonUp(0))

@@ -14,6 +14,10 @@ public class Score : MonoBehaviour
     public GameObject finalScoreText;
     public TMP_Text finalScore;
 
+    public AudioClip scoreSFX;
+    public AudioClip negativeSFX;
+    private AudioSource ac;
+
     public static Score Instance
     {
         get { return _instance; }
@@ -27,23 +31,34 @@ public class Score : MonoBehaviour
         }
 
         _instance = this;
+        ac = GetComponent<AudioSource>();
         DontDestroyOnLoad(this.gameObject);
     }
 
     public void UpdateScore(float amount)
     {
+        if(amount >= 0)
+        {
+            ac.PlayOneShot(scoreSFX);
+        } else {
+            ac.PlayOneShot(negativeSFX);
+        }
         SetIndicatorText(amount);
         score += amount;
         score_text.text = score.ToString();
-        Debug.Log(score);
     }
 
-    public void ShowIndicator(Vector3 InputPosition)
+    public void ShowIndicator(Vector3 InputPosition, bool mouse)
     {
         if (!scoreIndicator.activeInHierarchy)
         {
             scoreIndicator.SetActive(true);
-            scoreIndicator.transform.position = InputPosition;
+            if (mouse)
+            {
+                scoreIndicator.transform.position = InputPosition;
+            } else {
+                scoreIndicator.transform.localPosition = InputPosition;
+            }
         }
     }
 
@@ -85,6 +100,13 @@ public class Score : MonoBehaviour
 
     void SetIndicatorText(float amount)
     {
-        scoreIndicatortext.text = "+" + amount.ToString();
+        if(amount >= 0)
+        {
+            scoreIndicatortext.text = "+" + amount.ToString();
+            scoreIndicatortext.color = Color.white;
+        } else {
+            scoreIndicatortext.text = "-" + amount.ToString();
+            scoreIndicatortext.color = Color.red;
+        }
     }
 }

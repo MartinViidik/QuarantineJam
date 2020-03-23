@@ -30,7 +30,7 @@ public class ToiletPaper : MonoBehaviour
             } else {
                 Score.Instance.UpdateScore(-10);
             }
-            Score.Instance.ShowIndicator(cart.transform.position);
+            Score.Instance.ShowIndicator(cart.transform.position, false);
             gameObject.SetActive(false);
         }
     }

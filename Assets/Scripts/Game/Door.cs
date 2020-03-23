@@ -8,15 +8,22 @@ public class Door : MonoBehaviour
     public Sprite openSprite;
     public Sprite closedSprite;
 
+    public AudioClip openSFX;
+    public AudioClip closeSFX;
+    private AudioSource ac;
+
     private void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
+        ac = GetComponent<AudioSource>();
+        StartCoroutine("MuteDoors");
         SetState(false);
     }
     public void StartOpening()
     {
         open = true;
         SetState(true);
+        ac.PlayOneShot(openSFX, Random.Range(0.5f, 0.75f));
         StartCoroutine(DoorOpen());
     }
 
@@ -29,6 +36,7 @@ public class Door : MonoBehaviour
     void CloseDoor()
     {
         open = false;
+        ac.PlayOneShot(closeSFX, Random.Range(0.5f, 0.75f));
         SetState(false);
     }
 
@@ -38,6 +46,7 @@ public class Door : MonoBehaviour
         if (open)
         {
             Score.Instance.UpdateScore(-10);
+            Score.Instance.ShowIndicator(transform.localPosition, false);
             CloseDoor();
         }
     }
@@ -51,4 +60,11 @@ public class Door : MonoBehaviour
             renderer.sprite = closedSprite;
         }
     }
+
+    IEnumerable MuteDoors()
+    {
+        yield return new WaitForSeconds(6);
+        ac.volume = 0;
+    }
+
 }
