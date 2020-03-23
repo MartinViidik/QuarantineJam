@@ -26,6 +26,11 @@ public class Cart : MonoBehaviour
             transform.localPosition += Vector3.right * Time.deltaTime * speed;
             if (transform.localPosition.x > 4)
             {
+                if (fullCart)
+                {
+                    Score.Instance.UpdateScore(5f);
+                    Score.Instance.ShowIndicator(new Vector3(0, 0, 0), false);
+                }
                 ReturnToStart();
             }
         }

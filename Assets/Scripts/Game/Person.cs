@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Person : MonoBehaviour
 {
@@ -26,8 +24,8 @@ public class Person : MonoBehaviour
         {
             case PersonState.Moving:
                 {
-                    MoveTo(target.transform.localPosition, 2f);
-                    if (GetDistance(target.transform.localPosition) <= 3.5f)
+                    MoveTo(target.transform.localPosition, 2.5f);
+                    if (GetDistance(target.transform.localPosition) <= 4f)
                     {
                         _state = PersonState.Talking;
                     }

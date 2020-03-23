@@ -9,9 +9,11 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 0.0f;
             pausedGraphic.SetActive(true);
+            AudioListener.pause = true;
         } else {
             Time.timeScale = 1.0f;
             pausedGraphic.SetActive(false);
+            AudioListener.pause = false;
         }
     }
 }

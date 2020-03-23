@@ -1,11 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DistanceController : MonoBehaviour
 {
     public Person[] people;
-    bool timer;
+    bool timer = false;
     void Start()
     {
         StartCoroutine(InitialDelay());
@@ -27,9 +26,10 @@ public class DistanceController : MonoBehaviour
     }
     public void TalkingTimer()
     {
-        if (timer)
+        if (!timer)
         {
             StartCoroutine(TalkingDelay());
+            timer = true;
         } else {
             return;
         }
@@ -37,8 +37,9 @@ public class DistanceController : MonoBehaviour
 
     private IEnumerator TalkingDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.15f);
         Score.Instance.UpdateScore(-25);
+        yield return new WaitForSeconds(0.5f);
         timer = false;
     }
 }
