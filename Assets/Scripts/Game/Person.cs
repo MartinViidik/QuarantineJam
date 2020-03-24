@@ -46,6 +46,10 @@ public class Person : MonoBehaviour
             case PersonState.Talking:
                 {
                     controller.TalkingTimer();
+                    if (GetDistance(target.transform.localPosition) >= 4f)
+                    {
+                        _state = PersonState.Moving;
+                    }
                 }
                 break;
             case PersonState.Stationary:

@@ -6,15 +6,19 @@ public class DirtyHand : MonoBehaviour
     private Vector3 targ;
     public float speed = 500f;
     public float dist;
+    public GameObject fingerPos;
+
+    private DirtyHandController dirtyController;
 
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.localPosition, targ, speed * Time.deltaTime * 3);
-        dist = Vector3.Distance(targ, transform.localPosition);
-        if (dist <= 4)
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime * 3);
+        dist = Vector3.Distance(target.transform.position, fingerPos.transform.position);
+        if (dist <= 0.6f)
         {
             Score.Instance.UpdateScore(-25, transform.localPosition, false);
+            dirtyController.PlaySound();
             gameObject.SetActive(false);
         }
     }
@@ -23,25 +27,32 @@ public class DirtyHand : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            float x = Random.Range(-6, -4);
+            if (dirtyController == null)
+            {
+                dirtyController = gameObject.GetComponentInParent<DirtyHandController>();
+                target = dirtyController.target;
+            }
+
+            float x = Random.Range(-6, 6);
             float y = Random.Range(-5, 5);
             Vector3 position = new Vector3(x, y, 1);
-            float distCheck = Vector3.Distance(targ, position);
+            float distCheck = Vector3.Distance(target.transform.localPosition, position);
 
-            if (distCheck <= 5.5f)
+            if (distCheck <= 3.5f)
             {
                 gameObject.SetActive(false);
                 return;
             } else {
                 transform.position = position;
             }
-            targ = new Vector3(0, 0, 0);
+
             RotateTowardsTarget();
         }
     }
 
     public void RotateTowardsTarget()
     {
+        targ = target.transform.position;
         targ.z = 0f;
 
         Vector3 objectPos = transform.position;
@@ -58,6 +69,7 @@ public class DirtyHand : MonoBehaviour
 
     public void MoveBack()
     {
+        dirtyController.PlaySound();
         gameObject.SetActive(false);
         Score.Instance.UpdateScore(15, Input.mousePosition, true);
     }

@@ -1158,6 +1158,7 @@ MonoBehaviour:
   finalScore: {fileID: 871150595}
   scoreSFX: {fileID: 8300000, guid: 2e6ad007ba69d3e4a920eb927e7ac2aa, type: 3}
   negativeSFX: {fileID: 8300000, guid: 983def833347fce4f814db26725988e0, type: 3}
+  countSFX: {fileID: 8300000, guid: 67c5704254be70b41a5ec5d21115eb1c, type: 3}
 --- !u!114 &1627864267
 MonoBehaviour:
   m_ObjectHideFlags: 0

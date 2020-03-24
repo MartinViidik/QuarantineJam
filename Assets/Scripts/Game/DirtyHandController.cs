@@ -7,6 +7,9 @@ public class DirtyHandController : MonoBehaviour
     public GameObject dirtyHand;
     public GameObject target;
 
+    public AudioClip pokeSFX;
+    private AudioSource ac;
+
     private void Awake()
     {
         for(int i = 0; i <= 10; i++)
@@ -15,6 +18,7 @@ public class DirtyHandController : MonoBehaviour
             _dirtyHand.SetActive(false);
         }
 
+        ac = GetComponent<AudioSource>();
         StartCoroutine(InitialDelay());
     }
 
@@ -22,12 +26,12 @@ public class DirtyHandController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.75f);
             GetHand();
         }
     }
 
-    void GetHand()
+    public void GetHand()
     {
         int index = Random.Range(0, 10);
         DirtyHand hand = transform.GetChild(index).GetComponent<DirtyHand>();
@@ -43,8 +47,13 @@ public class DirtyHandController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         Objective.Instance.UpdateObjective("Don't touch your face!");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
         StartCoroutine(SpawnHand());
+    }
+
+    public void PlaySound()
+    {
+        ac.PlayOneShot(pokeSFX);
     }
 
 }

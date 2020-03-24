@@ -8,11 +8,14 @@ public class Cart : MonoBehaviour
     float speed = 100;
     public GameObject full;
     SpriteRenderer renderer;
+    private AudioSource ac;
+    public AudioClip impactSFX;
     private void Start()
     {
         SetSpeed();
         SetState(GetState());
         initialPosition = transform.localPosition;
+        ac = GetComponent<AudioSource>();
     }
 
     private void Awake()
@@ -35,6 +38,10 @@ public class Cart : MonoBehaviour
                 ReturnToStart();
             }
         }
+    }
+    public void ImpactSound()
+    {
+        ac.PlayOneShot(impactSFX);
     }
     void ReturnToStart()
     {

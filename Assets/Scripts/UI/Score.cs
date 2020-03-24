@@ -16,6 +16,7 @@ public class Score : MonoBehaviour
 
     public AudioClip scoreSFX;
     public AudioClip negativeSFX;
+    public AudioClip countSFX;
     private AudioSource ac;
 
     public static Score Instance
@@ -70,6 +71,10 @@ public class Score : MonoBehaviour
         finalScoreText.SetActive(true);
         while (i != score)
         {
+            if (!ac.isPlaying)
+            {
+                ac.PlayOneShot(countSFX);
+            }
             if(i > score)
             {
                 yield return new WaitForSeconds(0.01f);
@@ -81,6 +86,7 @@ public class Score : MonoBehaviour
                 finalScore.text = i.ToString();
             }
         }
+        ac.Stop();
         MenuController.Instance.LoadMenu("endgame");
     }
 
