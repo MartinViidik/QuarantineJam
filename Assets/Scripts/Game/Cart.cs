@@ -5,7 +5,7 @@ public class Cart : MonoBehaviour
     public bool activated;
     public bool fullCart;
     Vector3 initialPosition;
-    float speed = 100;
+    float speed = 5000;
     public GameObject full;
     SpriteRenderer renderer;
     private AudioSource ac;
@@ -27,7 +27,7 @@ public class Cart : MonoBehaviour
         if (activated)
         {
             transform.localPosition += Vector3.right * Time.deltaTime * speed;
-            if (transform.localPosition.x > 4)
+            if (transform.localPosition.x >= 4.2f)
             {
                 if (fullCart)
                 {

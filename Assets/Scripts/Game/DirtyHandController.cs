@@ -26,7 +26,7 @@ public class DirtyHandController : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1.75f);
+            yield return new WaitForSeconds(0.75f);
             GetHand();
         }
     }

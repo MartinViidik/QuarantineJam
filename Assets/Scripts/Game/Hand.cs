@@ -5,7 +5,7 @@ public class Hand : MonoBehaviour
 {
     public bool selected;
     public Vector3 inputPOS;
-    bool handEnabled;
+    public bool handEnabled;
     public Animator anim;
     public GameObject foam;
     private AudioSource ac;

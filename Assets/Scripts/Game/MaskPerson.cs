@@ -19,7 +19,6 @@ public class MaskPerson : MonoBehaviour
     {
         initialPosition = transform.position;
         StartCoroutine(InitialDelay());
-        customizePerson();
     }
     private void Update()
     {
@@ -56,7 +55,6 @@ public class MaskPerson : MonoBehaviour
     void MoveToStart()
     {
         transform.position = initialPosition;
-        customizePerson();
     }
 
     void MoveToDestination(Vector3 destination, float speed)
@@ -79,13 +77,6 @@ public class MaskPerson : MonoBehaviour
         _state = MaskPersonState.End;
     }
 
-    void customizePerson()
-    {
-        foreach (GameObject part in cosmeticParts)
-        {
-            part.GetComponent<SpriteRenderer>().color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-        }
-    }
 
     private IEnumerator InitialDelay()
     {

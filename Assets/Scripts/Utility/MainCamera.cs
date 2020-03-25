@@ -40,7 +40,6 @@ public class MainCamera : MonoBehaviour
             }
             if (hitCollider.CompareTag("Hand"))
             {
-                Debug.Log(pos);
                 rubTarget = hitCollider.gameObject;
             }
             if (hitCollider.CompareTag("DirtyHand"))

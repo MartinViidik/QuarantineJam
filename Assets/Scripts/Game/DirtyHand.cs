@@ -13,9 +13,9 @@ public class DirtyHand : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime * 3);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime * 2f);
         dist = Vector3.Distance(target.transform.position, fingerPos.transform.position);
-        if (dist <= 0.6f)
+        if (dist <= 1)
         {
             Score.Instance.UpdateScore(-25, transform.localPosition, false);
             dirtyController.PlaySound();
@@ -33,10 +33,10 @@ public class DirtyHand : MonoBehaviour
                 target = dirtyController.target;
             }
 
-            float x = Random.Range(-6, 6);
-            float y = Random.Range(-5, 5);
+            float x = Random.Range(-5, 5);
+            float y = Random.Range(-4, 4);
             Vector3 position = new Vector3(x, y, 1);
-            float distCheck = Vector3.Distance(target.transform.localPosition, position);
+            float distCheck = Vector3.Distance(target.transform.position, position);
 
             if (distCheck <= 3.5f)
             {

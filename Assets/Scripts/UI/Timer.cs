@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
     {
         counting = true;
         currCountdownValue = countdownValue;
-        GameController.Instance.SetTempo(1.15f);
+        GameController.Instance.IncreaseTempo(0.025f);
         while (currCountdownValue >= 0)
         {
             yield return new WaitForSeconds(1.0f);
@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(5f);
-        StartCoroutine(StartCountdown(10));
+        StartCoroutine(StartCountdown(5));
     }
 
     public void SceneChanged()

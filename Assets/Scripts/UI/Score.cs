@@ -77,11 +77,11 @@ public class Score : MonoBehaviour
             }
             if(i > score)
             {
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0045f);
                 i--;
                 finalScore.text = i.ToString();
             } else {
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0045f);
                 i++;
                 finalScore.text = i.ToString();
             }

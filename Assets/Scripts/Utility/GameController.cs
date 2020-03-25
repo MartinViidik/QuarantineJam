@@ -26,6 +26,10 @@ public class GameController : MonoBehaviour
 
     public void SetTempo(float pitch)
     {
-
+        ac.pitch = pitch;
+    }
+    public void IncreaseTempo(float amount)
+    {
+        ac.pitch += amount;
     }
 }

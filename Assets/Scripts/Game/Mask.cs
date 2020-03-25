@@ -16,7 +16,7 @@ public class Mask : MonoBehaviour
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector3(pos.x, pos.y, 1);
             float dist = Vector3.Distance(transform.position, target.transform.position);
-            if(dist <= 1.2f)
+            if(dist <= 1.35f)
             {
                 dragged = false;
                 target.GetComponent<VisualMask>().MaskFadeIn();
