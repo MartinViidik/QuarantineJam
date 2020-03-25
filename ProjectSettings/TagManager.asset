@@ -9,6 +9,7 @@ TagManager:
   - DirtyHand
   - Cart
   - Person
+  - Mask
   layers:
   - Default
   - TransparentFX

@@ -101,6 +101,7 @@ public class Scenemanager : MonoBehaviour
         sceneIndex = 0;
         RefreshScenes();
         StartTransition();
+        GameController.Instance.SetTempo(1f);
     }
 
     void GameOver()

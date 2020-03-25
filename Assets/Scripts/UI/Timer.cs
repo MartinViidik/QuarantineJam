@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
     {
         counting = true;
         currCountdownValue = countdownValue;
+        GameController.Instance.SetTempo(1.15f);
         while (currCountdownValue >= 0)
         {
             yield return new WaitForSeconds(1.0f);

@@ -4,8 +4,9 @@ public class MainCamera : MonoBehaviour
 {
     private static MainCamera _instance;
     GameObject rubTarget;
+    GameObject grabTarget;
     Vector3 pos;
-    bool rubbing;
+
     public static MainCamera Instance
     {
         get { return _instance; }
@@ -41,7 +42,6 @@ public class MainCamera : MonoBehaviour
             {
                 Debug.Log(pos);
                 rubTarget = hitCollider.gameObject;
-                rubbing = true;
             }
             if (hitCollider.CompareTag("DirtyHand"))
             {
@@ -54,17 +54,27 @@ public class MainCamera : MonoBehaviour
             {
                 hitCollider.GetComponent<Person>().SetRetreating();
             }
+            if (hitCollider.CompareTag("Mask"))
+            {
+                grabTarget = hitCollider.gameObject;
+                hitCollider.GetComponent<Mask>().dragged = true;
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {
             if(rubTarget != null)
             {
-                rubbing = false;
                 rubTarget.GetComponent<Hand>().StopRubbing();
+                rubTarget = null;
+            }
+            if(grabTarget != null)
+            {
+                grabTarget.GetComponent<Mask>().dragged = false;
+                grabTarget = null;
             }
         }
 
-        if (rubbing)
+        if (rubTarget != null)
         {
             RubTarget();
         }
