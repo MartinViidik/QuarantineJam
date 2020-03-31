@@ -5,7 +5,7 @@ public class Cart : MonoBehaviour
     public bool activated;
     public bool fullCart;
     Vector3 initialPosition;
-    float speed = 5000;
+    float speed = 4;
     public GameObject full;
     SpriteRenderer renderer;
     private AudioSource ac;
@@ -52,25 +52,22 @@ public class Cart : MonoBehaviour
 
     void SetSpeed()
     {
-        speed = Random.Range(3, 4);
+        speed = Random.Range(4, 6);
     }
     public void SetState(bool state)
     {
-        if(state == true)
+        fullCart = state;
+        full.SetActive(state);
+        if(state)
         {
-            fullCart = true;
-            full.SetActive(true);
             renderer.color = Color.red;
         } else {
-            fullCart = false;
-            full.SetActive(false);
             renderer.color = Color.green;
         }
     }
     bool GetState()
     {
         float RNG = Random.Range(0, 10);
-        Debug.Log(RNG);
         if (RNG % 2 == 0)
         {
             return true;

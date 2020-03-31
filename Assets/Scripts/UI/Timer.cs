@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField] int timerLength;
     public TMP_Text timer_text;
     float currCountdownValue;
     bool counting;
@@ -41,7 +42,7 @@ public class Timer : MonoBehaviour
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(5f);
-        StartCoroutine(StartCountdown(5));
+        StartCoroutine(StartCountdown(timerLength));
     }
 
     public void SceneChanged()

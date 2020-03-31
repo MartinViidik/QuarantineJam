@@ -38,7 +38,7 @@ public class DirtyHand : MonoBehaviour
             Vector3 position = new Vector3(x, y, 1);
             float distCheck = Vector3.Distance(target.transform.position, position);
 
-            if (distCheck <= 3.5f)
+            if (distCheck <= 4)
             {
                 gameObject.SetActive(false);
                 return;

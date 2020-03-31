@@ -60,10 +60,4 @@ public class Door : MonoBehaviour
         }
     }
 
-    IEnumerable MuteDoors()
-    {
-        yield return new WaitForSeconds(6);
-        ac.volume = 0;
-    }
-
 }

@@ -18,14 +18,10 @@ public class Hand : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        ac = GetComponent<AudioSource>();
-    }
-
     private void Start()
     {
         StartCoroutine(InitialDelay());
+        ac = GetComponent<AudioSource>();
     }
 
     private IEnumerator RubCoroutine()

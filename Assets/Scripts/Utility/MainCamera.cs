@@ -28,7 +28,7 @@ public class MainCamera : MonoBehaviour
         {
             pos = Input.mousePosition;
             Collider2D hitCollider = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pos));
-            if (hitCollider.CompareTag("Door"))
+            if (hitCollider.gameObject.CompareTag("Door"))
             {
                 Door door = hitCollider.GetComponent<Door>();
                 if (door.open)
@@ -38,22 +38,20 @@ public class MainCamera : MonoBehaviour
                 }
                 
             }
-            if (hitCollider.CompareTag("Hand"))
+            if (hitCollider.gameObject.CompareTag("Hand"))
             {
                 rubTarget = hitCollider.gameObject;
             }
-            if (hitCollider.CompareTag("DirtyHand"))
+            if (hitCollider.gameObject.CompareTag("DirtyHand"))
             {
-                Debug.Log("test");
                 hitCollider.GetComponent<DirtyHand>().MoveBack();
-                pos = Input.mousePosition;
                 Score.Instance.ShowIndicator(Input.mousePosition, true);
             }
-            if (hitCollider.CompareTag("Person"))
+            if (hitCollider.gameObject.CompareTag("Person"))
             {
                 hitCollider.GetComponent<Person>().SetRetreating();
             }
-            if (hitCollider.CompareTag("Mask"))
+            if (hitCollider.gameObject.CompareTag("Mask"))
             {
                 grabTarget = hitCollider.gameObject;
                 hitCollider.GetComponent<Mask>().dragged = true;

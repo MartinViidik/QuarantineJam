@@ -6,7 +6,6 @@ public class DoorController : MonoBehaviour
 {
     public List<Door> doors = new List<Door>();
     float cooldown = 1.5f;
-    int amount = 0;
 
     private void Start()
     {
