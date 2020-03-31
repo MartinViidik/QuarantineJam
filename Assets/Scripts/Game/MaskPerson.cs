@@ -81,7 +81,7 @@ public class MaskPerson : MonoBehaviour
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        Objective.Instance.UpdateObjective("Wear protective gear!");
+        Objective.Instance.UpdateObjective("gear");
         yield return new WaitForSeconds(3f);
         _state = MaskPersonState.Begin;
     }

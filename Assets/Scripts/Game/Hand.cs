@@ -47,7 +47,7 @@ public class Hand : MonoBehaviour
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        Objective.Instance.UpdateObjective("Wash your hands!");
+        Objective.Instance.UpdateObjective("washhands");
         yield return new WaitForSeconds(3f);
         handEnabled = true;
     }

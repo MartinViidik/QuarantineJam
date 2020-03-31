@@ -24,7 +24,7 @@ public class MallController : MonoBehaviour
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        Objective.Instance.UpdateObjective("Don't hoard supplies!");
+        Objective.Instance.UpdateObjective("hoard");
         yield return new WaitForSeconds(3f);
         cart.GetComponent<Cart>().activated = true;
         enabled = true;

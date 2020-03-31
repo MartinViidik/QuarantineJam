@@ -12,8 +12,7 @@ public class Background : MonoBehaviour
     bool active = false;
     Color targetColor;
     Renderer renderer;
-
-    private void Awake()
+    void Awake()
     {
         if (_instance != null && _instance != this)
         {

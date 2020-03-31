@@ -23,9 +23,9 @@ public class Objective : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void UpdateObjective(string newObjective)
+    public void UpdateObjective(string key)
     {
-        objective_text.text = newObjective;
+        objective_text.text = Localisation.GetLocalisedValue(key);
         StartCoroutine(SetBlank());
     }
 

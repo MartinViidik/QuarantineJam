@@ -46,7 +46,7 @@ public class DirtyHandController : MonoBehaviour
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        Objective.Instance.UpdateObjective("Don't touch your face!");
+        Objective.Instance.UpdateObjective("touchface");
         yield return new WaitForSeconds(4f);
         StartCoroutine(SpawnHand());
     }

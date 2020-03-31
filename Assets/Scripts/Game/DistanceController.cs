@@ -12,7 +12,7 @@ public class DistanceController : MonoBehaviour
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        Objective.Instance.UpdateObjective("Keep a distance!");
+        Objective.Instance.UpdateObjective("distance");
         yield return new WaitForSeconds(3f);
         StartGame();
     }

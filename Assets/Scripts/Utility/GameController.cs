@@ -32,4 +32,12 @@ public class GameController : MonoBehaviour
     {
         ac.pitch += amount;
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Localisation.UpdateLanguage(Localisation.Language.English);
+        }
+    }
 }

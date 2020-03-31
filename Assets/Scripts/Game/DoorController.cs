@@ -37,7 +37,7 @@ public class DoorController : MonoBehaviour
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
-        Objective.Instance.UpdateObjective("Stay indoors!");
+        Objective.Instance.UpdateObjective("indoors");
         yield return new WaitForSeconds(3f);
         StartCoroutine(StartDoors(cooldown));
     }
