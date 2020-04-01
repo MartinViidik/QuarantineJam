@@ -53,7 +53,6 @@ public class Scenemanager : MonoBehaviour
 
     public void unloadScene(int index)
     {
-        Debug.Log(sceneIndex);
         if(GameScene.buildIndex <= 0)
         {
             SceneManager.UnloadSceneAsync(index);
@@ -78,13 +77,18 @@ public class Scenemanager : MonoBehaviour
         }
     }
 
+    public void LoadRetry()
+    {
+        SceneManager.LoadScene("Retry", LoadSceneMode.Additive);
+    }
+
 
     public void ReturnToMenu()
     {
+        gameOver = false;
         sceneIndex = 2;
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene("Main", LoadSceneMode.Single);
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
-        Score.Instance.ResetScore();
         RefreshScenes();
     }
 
@@ -92,16 +96,6 @@ public class Scenemanager : MonoBehaviour
     {
         LoadUI();
         StartTransition();
-    }
-
-    public void Retry()
-    {
-        Score.Instance.ResetScore();
-        gameOver = false;
-        sceneIndex = 0;
-        RefreshScenes();
-        StartTransition();
-        GameController.Instance.SetTempo(1f);
     }
 
     void GameOver()
@@ -116,14 +110,12 @@ public class Scenemanager : MonoBehaviour
         StartCoroutine(DelayTransition());
     }
 
+
     private IEnumerator DelayTransition()
     {
         Transition.Instance.SetState(0, "in");
         yield return new WaitForSeconds(1f);
-        if(sceneIndex > 2)
-        {
-            unloadScene(sceneIndex);
-        } 
+        unloadScene(sceneIndex);
         if (!gameOver)
         {
             loadScene();

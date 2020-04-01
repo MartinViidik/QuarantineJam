@@ -20,7 +20,6 @@ public class Objective : MonoBehaviour
         }
 
         _instance = this;
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void UpdateObjective(string key)

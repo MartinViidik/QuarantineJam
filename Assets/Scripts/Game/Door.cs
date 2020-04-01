@@ -16,7 +16,6 @@ public class Door : MonoBehaviour
     {
         renderer = GetComponent<SpriteRenderer>();
         ac = GetComponent<AudioSource>();
-        StartCoroutine("MuteDoors");
         SetState(false);
     }
     public void StartOpening()

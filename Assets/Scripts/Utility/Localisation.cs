@@ -5,13 +5,17 @@ public class Localisation : MonoBehaviour
 {
     public enum Language
     {
-        English,
-        Estonian
+        English = 0,
+        Estonian = 1,
+        Swedish = 2,
+        Dutch = 3
     }
-    public static Language language = Language.Estonian;
+    public static Language language = Language.English;
 
     private static Dictionary<string, string> localisedEN;
     private static Dictionary<string, string> localisedEE;
+    private static Dictionary<string, string> localisedSE;
+    private static Dictionary<string, string> localisedNL;
 
     public delegate void ButtonClick();
     public static event ButtonClick Click;
@@ -24,6 +28,8 @@ public class Localisation : MonoBehaviour
 
         localisedEN = csvLoader.GetDictionaryValues("en");
         localisedEE = csvLoader.GetDictionaryValues("ee");
+        localisedSE = csvLoader.GetDictionaryValues("se");
+        localisedNL = csvLoader.GetDictionaryValues("nl");
 
         isInit = true;
     }
@@ -40,6 +46,12 @@ public class Localisation : MonoBehaviour
             case Language.Estonian:
                 localisedEE.TryGetValue(key, out value);
                 break;
+            case Language.Swedish:
+                localisedSE.TryGetValue(key, out value);
+                break;
+            case Language.Dutch:
+                localisedNL.TryGetValue(key, out value);
+                break;
         }
         return value;
     }
@@ -47,6 +59,11 @@ public class Localisation : MonoBehaviour
     {
         language = newLanguage;
         Click();
+    }
+
+    public static void LanguageButtonClick(int value)
+    {
+        UpdateLanguage((Language)value);
     }
 
 }

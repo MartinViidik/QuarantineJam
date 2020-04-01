@@ -33,7 +33,6 @@ public class Score : MonoBehaviour
 
         _instance = this;
         ac = GetComponent<AudioSource>();
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void UpdateScore(float amount, Vector3 inputPosition, bool mouse)
@@ -87,7 +86,7 @@ public class Score : MonoBehaviour
             }
         }
         ac.Stop();
-        MenuController.Instance.LoadMenu("endgame");
+        Scenemanager.Instance.LoadRetry();
     }
 
     public void HideScore(bool finalScore)

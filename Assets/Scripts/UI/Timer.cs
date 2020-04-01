@@ -42,7 +42,7 @@ public class Timer : MonoBehaviour
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(5f);
-        StartCoroutine(StartCountdown(timerLength));
+        StartCoroutine(StartCountdown(1));
     }
 
     public void SceneChanged()
