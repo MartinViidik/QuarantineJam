@@ -19,7 +19,7 @@ public class DistanceController : MonoBehaviour
 
     void StartGame()
     {
-        for(int i = 0; i <= people.Length; i++)
+        for(int i = 0; i != 2; i++)
         {
             people[i].SetMoving();
         }

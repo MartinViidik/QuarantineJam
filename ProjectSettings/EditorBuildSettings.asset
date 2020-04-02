@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Retry.unity
     guid: ec4dd9d64ab12544ebc4c3cf8da042d4
+  - enabled: 1
+    path: Assets/Scenes/Leaderboards.unity
+    guid: 361f4d20b0caccc4aa8f0776fe2eac9d
   m_configObjects: {}
