@@ -2,7 +2,8 @@
 
 public class Pause : MonoBehaviour
 {
-    public GameObject pausedGraphic;
+    [SerializeField]
+    private GameObject pausedGraphic;
     public void PauseGame()
     {
         if (Time.timeScale == 1.0f)

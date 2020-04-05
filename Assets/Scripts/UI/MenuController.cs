@@ -2,17 +2,23 @@
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject menuButtons;
-    public GameObject title;
-    public GameObject credits;
+    [SerializeField]
+    private GameObject menuButtons;
 
-    public AudioClip confirmSFX;
+    [SerializeField]
+    private GameObject title;
+
+    [SerializeField]
+    private GameObject credits;
+
+    [SerializeField]
+    private AudioClip confirmSFX;
+
     private AudioSource ac;
     public void OnEnable()
     {
         LoadMenu();
     }
-
     public void PlayGame()
     {
         menuButtons.SetActive(false);
@@ -26,5 +32,4 @@ public class MenuController : MonoBehaviour
         title.SetActive(true);
         credits.SetActive(true);
     }
-
 }

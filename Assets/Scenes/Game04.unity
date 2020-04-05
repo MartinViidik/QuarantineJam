@@ -1719,8 +1719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89be6fc8252963942b932180d10882c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
-  fullCart: 0
   full: {fileID: 803842904}
   impactSFX: {fileID: 8300000, guid: b279dfa652eef52418ff49b682e60b0f, type: 3}
 --- !u!212 &855148154

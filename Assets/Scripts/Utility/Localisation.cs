@@ -60,7 +60,6 @@ public class Localisation : MonoBehaviour
         language = newLanguage;
         Click();
     }
-
     public static void LanguageButtonClick(int value)
     {
         UpdateLanguage((Language)value);

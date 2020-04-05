@@ -3,10 +3,9 @@
 public class MainCamera : MonoBehaviour
 {
     private static MainCamera _instance;
-    GameObject rubTarget;
-    GameObject grabTarget;
-    Vector3 pos;
-
+    private GameObject rubTarget;
+    private GameObject grabTarget;
+    private Vector3 pos;
     public static MainCamera Instance
     {
         get { return _instance; }
@@ -74,7 +73,6 @@ public class MainCamera : MonoBehaviour
                 grabTarget = null;
             }
         }
-
         if (rubTarget != null)
         {
             RubTarget();
@@ -91,7 +89,6 @@ public class MainCamera : MonoBehaviour
             rubTarget.GetComponent<Hand>().GetRubbed();
         }
     }
-
     public Vector3 ReturnMousePosition()
     {
         Vector3 position = Input.mousePosition;

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    public List<Door> doors = new List<Door>();
-    float cooldown = 1.5f;
-
+    [SerializeField]
+    private List<Door> doors = new List<Door>();
+    private float cooldown = 1.5f;
     private void Start()
     {
         foreach (Transform t in transform)
@@ -15,7 +15,6 @@ public class DoorController : MonoBehaviour
         }
         StartCoroutine(InitialDelay());
     }
-
     void GetRandomDoor(int amount)
     {
         for(int i = 1; i <= amount; i++)
@@ -24,7 +23,6 @@ public class DoorController : MonoBehaviour
             door.GetComponent<Door>().StartOpening();
         }
     }
-
     public IEnumerator StartDoors(float cooldown)
     {
         while (true)
@@ -33,7 +31,6 @@ public class DoorController : MonoBehaviour
             GetRandomDoor(1);
         }
     }
-
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
@@ -41,5 +38,4 @@ public class DoorController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         StartCoroutine(StartDoors(cooldown));
     }
-
 }

@@ -8,10 +8,10 @@ public class Background : MonoBehaviour
         get { return _instance; }
     }
 
-    float timeLeft;
-    bool active = false;
-    Color targetColor;
-    Renderer renderer;
+    private float timeLeft;
+    private bool active = false;
+    private Color targetColor;
+    private Renderer renderer;
     void Awake()
     {
         if (_instance != null && _instance != this)

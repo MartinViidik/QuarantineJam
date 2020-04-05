@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class MaskPerson : MonoBehaviour
 {
-    public GameObject visualMask;
+    [SerializeField]
+    private GameObject visualMask;
     private Vector3 initialPosition;
     private Vector3 destination;
-    public GameObject[] cosmeticParts;
+
+    [SerializeField]
+    private GameObject[] cosmeticParts;
     private enum MaskPersonState
     {
         Stationary,
         Begin,
         End
     }
-
-    MaskPersonState _state;
+    private MaskPersonState _state;
     private void Start()
     {
         initialPosition = transform.position;
@@ -51,7 +53,6 @@ public class MaskPerson : MonoBehaviour
                 break;
         }
     }
-
     void MoveToStart()
     {
         transform.position = initialPosition;
@@ -76,7 +77,6 @@ public class MaskPerson : MonoBehaviour
     {
         _state = MaskPersonState.End;
     }
-
 
     private IEnumerator InitialDelay()
     {

@@ -3,7 +3,9 @@ using TMPro;
 
 public class LocaliseText : MonoBehaviour
 {
-    TextMeshProUGUI field;
+    [SerializeField]
+    private TextMeshProUGUI field;
+
     public string key;
 
     private void Start()
@@ -15,12 +17,10 @@ public class LocaliseText : MonoBehaviour
     {
         return Localisation.GetLocalisedValue(key);
     }
-
     void UpdateText()
     {
         field.text = GetLocalisation();
     }
-
     private void OnEnable()
     {
         Localisation.Click += UpdateText;

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class DistanceController : MonoBehaviour
 {
-    public Person[] people;
-    bool timer = false;
+    [SerializeField]
+    private Person[] people;
+
+    private bool timer = false;
+
     void Start()
     {
         StartCoroutine(InitialDelay());
@@ -16,7 +19,6 @@ public class DistanceController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         StartGame();
     }
-
     void StartGame()
     {
         for(int i = 0; i != 2; i++)
@@ -34,7 +36,6 @@ public class DistanceController : MonoBehaviour
             return;
         }
     }
-
     private IEnumerator TalkingDelay()
     {
         yield return new WaitForSeconds(0.15f);

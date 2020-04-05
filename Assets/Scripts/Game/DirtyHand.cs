@@ -2,14 +2,17 @@
 
 public class DirtyHand : MonoBehaviour
 {
-    public GameObject target;
+    [SerializeField]
+    private GameObject target;
     private Vector3 targ;
-    public float speed = 500f;
-    public float dist;
-    public GameObject fingerPos;
+
+    private float speed = 500f;
+    private float dist;
+
+    [SerializeField]
+    private GameObject fingerPos;
 
     private DirtyHandController dirtyController;
-
 
     void Update()
     {
@@ -22,7 +25,6 @@ public class DirtyHand : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
     private void OnEnable()
     {
         if (gameObject.activeSelf)
@@ -49,7 +51,6 @@ public class DirtyHand : MonoBehaviour
             RotateTowardsTarget();
         }
     }
-
     public void RotateTowardsTarget()
     {
         targ = target.transform.position;
@@ -66,7 +67,6 @@ public class DirtyHand : MonoBehaviour
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
         }
     }
-
     public void MoveBack()
     {
         dirtyController.PlaySound();

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Objective : MonoBehaviour
 {
-    public TMP_Text objective_text;
+    [SerializeField]
+    private TMP_Text objective_text;
 
     private static Objective _instance;
     public static Objective Instance
@@ -21,13 +22,11 @@ public class Objective : MonoBehaviour
 
         _instance = this;
     }
-
     public void UpdateObjective(string key)
     {
         objective_text.text = Localisation.GetLocalisedValue(key);
         StartCoroutine(SetBlank());
     }
-
     private IEnumerator SetBlank()
     {
         yield return new WaitForSeconds(3);

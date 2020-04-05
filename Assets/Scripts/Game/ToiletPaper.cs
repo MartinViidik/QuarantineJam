@@ -2,7 +2,7 @@
 
 public class ToiletPaper : MonoBehaviour
 {
-    float speed = 15;
+    private float speed = 15;
     void Update()
     {
         transform.localPosition += Vector3.up * Time.deltaTime * speed;

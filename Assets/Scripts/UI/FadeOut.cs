@@ -14,7 +14,6 @@ public class FadeOut : MonoBehaviour
             yield return null;
         }
     }
-
     public IEnumerator FadeTextToZeroAlpha(float t, TMP_Text i)
     {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);

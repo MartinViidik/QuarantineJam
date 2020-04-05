@@ -2,12 +2,11 @@
 
 public class RetryController : MonoBehaviour
 {
-    public Canvas canvas;
-
+    [SerializeField]
+    private Canvas canvas;
     public void ReturnToMenu()
     {
         Scenemanager.Instance.ReturnToMenu();
         canvas.gameObject.SetActive(false);
     }
-
 }

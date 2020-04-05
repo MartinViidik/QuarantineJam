@@ -3,21 +3,28 @@ using UnityEngine;
 
 public class Highscores : MonoBehaviour
 {
-    public Highscore[] highscoresList;
+    [SerializeField]
+    private Highscore[] highscoresList;
+
     static Highscores instance;
-    DisplayHighscore highscoreDisplay;
+    private static Highscores _instance;
+
+    private DisplayHighscore highscoreDisplay;
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
         instance = this;
         highscoreDisplay = GetComponent<DisplayHighscore>();
     }
-
     public static void AddNewHighscore(string username, int score)
     {
         instance.StartCoroutine(instance.UploadNewHighscore(username, score));
     }
-
     IEnumerator UploadNewHighscore(string username, int score)
     {
         WWW www = new WWW(LeaderboardKey.webURL + LeaderboardKey.privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
@@ -49,7 +56,6 @@ public class Highscores : MonoBehaviour
             Debug.Log("Error uploading: " + www.error);
         }
     }
-
     void FormatHighscores(string textStream)
     {
         string[] entries = textStream.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);

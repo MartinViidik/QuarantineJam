@@ -4,19 +4,33 @@ using System.Collections;
 
 public class Score : MonoBehaviour
 {
-    public TMP_Text score_text;
-    public float score = 0;
+    [SerializeField]
+    private TMP_Text score_text;
+
+    private float _score;
+    public float score
+    {
+        get { return _score; }
+    }
 
     private static Score _instance;
-    public GameObject scoreIndicator;
-    public TMP_Text scoreIndicatortext;
+    [SerializeField]
+    private GameObject scoreIndicator;
 
-    public GameObject finalScoreText;
-    public TMP_Text finalScore;
+    [SerializeField]
+    private TMP_Text scoreIndicatortext;
 
-    public AudioClip scoreSFX;
-    public AudioClip negativeSFX;
-    public AudioClip countSFX;
+    [SerializeField]
+    private GameObject finalScoreText;
+    [SerializeField]
+    private TMP_Text finalScore;
+
+    [SerializeField]
+    private AudioClip scoreSFX;
+    [SerializeField]
+    private AudioClip negativeSFX;
+    [SerializeField]
+    private AudioClip countSFX;
     private AudioSource ac;
 
     public static Score Instance
@@ -34,7 +48,6 @@ public class Score : MonoBehaviour
         _instance = this;
         ac = GetComponent<AudioSource>();
     }
-
     public void UpdateScore(float amount, Vector3 inputPosition, bool mouse)
     {
         if(amount >= 0)
@@ -44,11 +57,10 @@ public class Score : MonoBehaviour
             ac.PlayOneShot(negativeSFX);
         }
         SetIndicatorText(amount);
-        score += amount;
-        score_text.text = score.ToString();
+        _score += amount;
+        score_text.text = _score.ToString();
         ShowIndicator(inputPosition, mouse);
     }
-
     public void ShowIndicator(Vector3 InputPosition, bool mouse)
     {
         if (!scoreIndicator.activeInHierarchy)
@@ -62,7 +74,6 @@ public class Score : MonoBehaviour
             }
         }
     }
-
     private IEnumerator FinalScoreCounter()
     {
         int i = 0;
@@ -88,7 +99,6 @@ public class Score : MonoBehaviour
         ac.Stop();
         Scenemanager.Instance.LoadRetry();
     }
-
     public void HideScore(bool finalScore)
     {
         score_text.text = "";
@@ -97,13 +107,11 @@ public class Score : MonoBehaviour
             StartCoroutine(FinalScoreCounter());
         }
     }
-
     public void ResetScore()
     {
         finalScoreText.SetActive(false);
-        score = 0;
+        _score = 0;
     }
-
     void SetIndicatorText(float amount)
     {
         if(amount >= 0)

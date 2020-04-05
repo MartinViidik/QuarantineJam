@@ -1,13 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Mask : MonoBehaviour
 {
     public bool dragged;
-    public GameObject target;
-    public GameObject person;
-    Vector3 initialPosition;
+
+    [SerializeField]
+    private GameObject target;
+
+    [SerializeField]
+    private GameObject person;
+
+    private Vector3 initialPosition;
 
     public void Update()
     {

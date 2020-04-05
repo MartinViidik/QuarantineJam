@@ -2,8 +2,11 @@
 
 public class CloseButton : MonoBehaviour
 {
-    public GameObject openWindow;
-    public GameObject restoreWindow;
+    [SerializeField]
+    private GameObject openWindow;
+
+    [SerializeField]
+    private GameObject restoreWindow;
 
     public void Close()
     {

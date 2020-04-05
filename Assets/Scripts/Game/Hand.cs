@@ -3,12 +3,16 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    public bool selected;
-    public Vector3 inputPOS;
-    public bool handEnabled;
-    public Animator anim;
-    public GameObject foam;
+    private bool selected;
+    private bool handEnabled;
+
+    [SerializeField]
+    private Animator anim;
+    [SerializeField]
+    private GameObject foam;
+
     private AudioSource ac;
+    public Vector3 inputPOS;
 
     public void GetRubbed()
     {
@@ -17,13 +21,11 @@ public class Hand : MonoBehaviour
             StartCoroutine(RubCoroutine());
         }
     }
-
     private void Start()
     {
         StartCoroutine(InitialDelay());
         ac = GetComponent<AudioSource>();
     }
-
     private IEnumerator RubCoroutine()
     {
         selected = true;
@@ -34,7 +36,6 @@ public class Hand : MonoBehaviour
         Score.Instance.UpdateScore(1, inputPOS, true);
         selected = false;
     }
-
     public void StopRubbing()
     {
         ac.volume = 0;
@@ -43,7 +44,6 @@ public class Hand : MonoBehaviour
         SetWashingAnimation(false);
         foam.SetActive(false);
     }
-
     private IEnumerator InitialDelay()
     {
         yield return new WaitForSeconds(1.5f);
@@ -51,7 +51,6 @@ public class Hand : MonoBehaviour
         yield return new WaitForSeconds(3f);
         handEnabled = true;
     }
-
     void SetWashingAnimation(bool state)
     {
         anim.SetBool("Washing", state);

@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] int timerLength;
-    public TMP_Text timer_text;
-    float currCountdownValue;
-    bool counting;
+    [SerializeField]
+    private int timerLength;
+
+    [SerializeField]
+    private TMP_Text timer_text;
+
+    private float currCountdownValue;
+    private bool counting;
     private void Update()
     {
         if (!counting)
@@ -32,24 +36,20 @@ public class Timer : MonoBehaviour
         StartCoroutine(StopCountdown());
         counting = false;
     }
-
     public IEnumerator StopCountdown()
     {
         yield return new WaitForSeconds(1.0f);
         Scenemanager.Instance.StartTransition();
     }
-
     public IEnumerator NewScene()
     {
         yield return new WaitForSeconds(5f);
-        StartCoroutine(StartCountdown(1));
+        StartCoroutine(StartCountdown(timerLength));
     }
-
     public void SceneChanged()
     {
         StartCoroutine(NewScene());
     }
-
     public void StopTimer()
     {
         StopAllCoroutines();

@@ -1,15 +1,18 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MallController : MonoBehaviour
 {
-    public GameObject toiletPaper;
-    public GameObject cart;
-    bool enabled;
+    [SerializeField]
+    private GameObject toiletPaper;
+
+    [SerializeField]
+    private GameObject cart;
+    private bool mallEnabled;
     private void Start()
     {
         StartCoroutine(InitialDelay());
+        mallEnabled = false;
     }
     void Update()
     {
@@ -26,7 +29,7 @@ public class MallController : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Objective.Instance.UpdateObjective("hoard");
         yield return new WaitForSeconds(3f);
-        cart.GetComponent<Cart>().activated = true;
-        enabled = true;
+        cart.GetComponent<Cart>().ActivateCarts(true);
+        mallEnabled = true;
     }
 }

@@ -327,10 +327,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a438d81f24a8fc46880faaa79250ec8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pokeSFX: {fileID: 8300000, guid: d277158f2fa678e479cabe25de489e93, type: 3}
   dirtyHand: {fileID: 8348000962131570555, guid: f5989ca4f1e1ce64cba6bc6cdb44028b,
     type: 3}
-  target: {fileID: 842730616}
-  pokeSFX: {fileID: 8300000, guid: d277158f2fa678e479cabe25de489e93, type: 3}
+  _target: {fileID: 842730616}
 --- !u!82 &617691182
 AudioSource:
   m_ObjectHideFlags: 0

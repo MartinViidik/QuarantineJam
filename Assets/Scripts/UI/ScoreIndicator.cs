@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreIndicator : MonoBehaviour
 {
-    int speed = 4;
+    private int speed = 4;
     void Update()
     {
         if (isActiveAndEnabled)

@@ -2,14 +2,18 @@
 
 public class Cart : MonoBehaviour
 {
-    public bool activated;
-    public bool fullCart;
-    Vector3 initialPosition;
-    float speed = 4;
-    public GameObject full;
-    SpriteRenderer renderer;
+    public bool activated { get; private set; }
+    public bool fullCart { get; private set; }
+
+    private Vector3 initialPosition;
+    private float speed = 4;
+    [SerializeField]
+    private GameObject full;
+    private SpriteRenderer renderer;
     private AudioSource ac;
-    public AudioClip impactSFX;
+
+    [SerializeField]
+    private AudioClip impactSFX;
     private void Start()
     {
         SetSpeed();
@@ -76,5 +80,10 @@ public class Cart : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void ActivateCarts(bool state)
+    {
+        activated = state;
     }
 }

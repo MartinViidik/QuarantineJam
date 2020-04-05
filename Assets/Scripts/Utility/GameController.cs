@@ -23,7 +23,6 @@ public class GameController : MonoBehaviour
         Application.targetFrameRate = 60;
         ac = GetComponent<AudioSource>();
     }
-
     public void SetTempo(float pitch)
     {
         ac.pitch = pitch;
@@ -31,13 +30,5 @@ public class GameController : MonoBehaviour
     public void IncreaseTempo(float amount)
     {
         ac.pitch += amount;
-    }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Localisation.UpdateLanguage(Localisation.Language.English);
-        }
     }
 }

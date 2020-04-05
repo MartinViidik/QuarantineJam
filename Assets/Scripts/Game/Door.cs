@@ -3,13 +3,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public bool open = false;
-    public SpriteRenderer renderer;
-    public Sprite openSprite;
-    public Sprite closedSprite;
+    public bool open { get; private set; }
 
-    public AudioClip openSFX;
-    public AudioClip closeSFX;
+    private SpriteRenderer renderer;
+
+    [SerializeField]
+    private Sprite openSprite;
+    [SerializeField]
+    private Sprite closedSprite;
+
+    [SerializeField]
+    private AudioClip openSFX;
+    [SerializeField]
+    private AudioClip closeSFX;
+
     private AudioSource ac;
 
     private void Awake()
@@ -25,20 +32,17 @@ public class Door : MonoBehaviour
         ac.PlayOneShot(openSFX, Random.Range(0.5f, 0.75f));
         StartCoroutine(DoorOpen());
     }
-
     public void SelectDoor()
     {
         Score.Instance.UpdateScore(10, Input.mousePosition, true);
         CloseDoor();
     }
-
     void CloseDoor()
     {
         open = false;
         ac.PlayOneShot(closeSFX, Random.Range(0.5f, 0.75f));
         SetState(false);
     }
-
     public IEnumerator DoorOpen()
     {
         yield return new WaitForSeconds(1f);
@@ -48,7 +52,6 @@ public class Door : MonoBehaviour
             CloseDoor();
         }
     }
-
     void SetState(bool open)
     {
         if (open)
@@ -58,5 +61,4 @@ public class Door : MonoBehaviour
             renderer.sprite = closedSprite;
         }
     }
-
 }

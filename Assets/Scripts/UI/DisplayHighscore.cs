@@ -4,9 +4,13 @@ using TMPro;
 
 public class DisplayHighscore : MonoBehaviour
 {
-    public TMP_Text[] highscoreText;
-    public TMP_Text loading;
-    Highscores highscoreManager;
+    [SerializeField]
+    private TMP_Text[] highscoreText;
+
+    [SerializeField]
+    private TMP_Text loading;
+
+    private Highscores highscoreManager;
 
     void Start()
     {
@@ -14,7 +18,6 @@ public class DisplayHighscore : MonoBehaviour
         highscoreManager = GetComponent<Highscores>();
         StartCoroutine("RefreshHighscores");
     }
-
     public void OnHighscoresFetched(Highscore[] highscoreList)
     {
         loading.gameObject.SetActive(false);
@@ -27,7 +30,6 @@ public class DisplayHighscore : MonoBehaviour
             }
         }
     }
-
     IEnumerator RefreshHighscores()
     {
         while (true)

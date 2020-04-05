@@ -9,18 +9,22 @@ public class Person : MonoBehaviour
         Moving,
         Talking
     }
-    public GameObject target;
-    public DistanceController controller;
-    Vector3 startPosition;
-    PersonState _state;
-    public AudioClip[] grunts;
+    [SerializeField]
+    private GameObject target;
+    [SerializeField]
+    private DistanceController controller;
+    private Vector3 startPosition;
+    private PersonState _state;
+
+    [SerializeField]
+    private AudioClip[] grunts;
+
     private AudioSource ac;
     private void Start()
     {
         startPosition = transform.localPosition;
         ac = GetComponent<AudioSource>();
     }
-
     private void Update()
     {
         switch (_state)
@@ -62,7 +66,6 @@ public class Person : MonoBehaviour
                 break;
         }
     }
-
     void MoveTo(Vector3 target, float speed)
     {
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, target, Time.deltaTime * speed);

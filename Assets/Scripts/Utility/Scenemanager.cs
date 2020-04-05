@@ -12,10 +12,14 @@ public class Scenemanager : MonoBehaviour
         get { return _instance; }
     }
 
-    public List<int> game_scenes = new List<int>();
-    public List<int> available_scenes;
+    [SerializeField]
+    private List<int> game_scenes = new List<int>();
+
+    [SerializeField]
+    private List<int> available_scenes;
+
     private int sceneIndex = 2;
-    bool gameOver;
+    private bool gameOver;
 
     void Start()
     {
@@ -26,7 +30,6 @@ public class Scenemanager : MonoBehaviour
             RefreshScenes();
         }
     }
-
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -38,7 +41,6 @@ public class Scenemanager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
-
     public void loadScene()
     {
         if(available_scenes.Count == 0)
@@ -50,7 +52,6 @@ public class Scenemanager : MonoBehaviour
             SceneManager.LoadScene(sceneIndex, LoadSceneMode.Additive);
         }
     }
-
     public void unloadScene(int index)
     {
         if(GameScene.buildIndex <= 0)
@@ -58,17 +59,14 @@ public class Scenemanager : MonoBehaviour
             SceneManager.UnloadSceneAsync(index);
         }
     }
-
     public void LoadUI()
     {
         SceneManager.LoadScene(1, LoadSceneMode.Additive);
     }
-
     void RefreshScenes()
     {
         available_scenes = new List<int>(game_scenes);
     }
-
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if(scene.buildIndex > 2)
@@ -76,13 +74,10 @@ public class Scenemanager : MonoBehaviour
             GameObject.Find("GameUI").GetComponent<Timer>().SceneChanged();
         }
     }
-
     public void LoadRetry()
     {
         SceneManager.LoadScene("Retry", LoadSceneMode.Additive);
     }
-
-
     public void ReturnToMenu()
     {
         gameOver = false;
@@ -91,26 +86,21 @@ public class Scenemanager : MonoBehaviour
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Additive);
         RefreshScenes();
     }
-
     public void StartGame()
     {
         LoadUI();
         StartTransition();
     }
-
     void GameOver()
     {
         gameOver = true;
         SceneManager.UnloadSceneAsync(sceneIndex);
         Score.Instance.HideScore(true);
     }
-    
     public void StartTransition()
     {
         StartCoroutine(DelayTransition());
     }
-
-
     private IEnumerator DelayTransition()
     {
         Transition.Instance.SetState(0, "in");
