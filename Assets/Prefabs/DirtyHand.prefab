@@ -127,9 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2614affa6a391624a8f4a4b5392e1649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  speed: 1
-  dist: 0
+  target: {fileID: 7278255819495825168, guid: 6a3b02a4332727e499faf0f463ec65c2, type: 3}
   fingerPos: {fileID: 5322189182182444456}
 --- !u!50 &8348000962131570559
 Rigidbody2D:

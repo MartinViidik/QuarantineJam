@@ -32,4 +32,8 @@ public class MenuController : MonoBehaviour
         title.SetActive(true);
         credits.SetActive(true);
     }
+    public void LoadLeaderboards(bool state)
+    {
+        Scenemanager.Instance.LoadLeaderboards(state);
+    }
 }

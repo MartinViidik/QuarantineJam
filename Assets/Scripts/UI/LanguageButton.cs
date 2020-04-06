@@ -2,7 +2,7 @@
 
 public class LanguageButton : MonoBehaviour
 {
-    public int value { get; private set; }
+    public int value;
     public void OnClicked()
     {
         Localisation.LanguageButtonClick(value);

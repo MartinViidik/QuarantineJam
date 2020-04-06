@@ -1,8 +1,8 @@
 ﻿public struct Highscore
 {
     public string username;
-    public int score;
-    public Highscore(string _username, int _score)
+    public float score;
+    public Highscore(string _username, float _score)
     {
         username = _username;
         score = _score;

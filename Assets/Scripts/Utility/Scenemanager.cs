@@ -78,6 +78,15 @@ public class Scenemanager : MonoBehaviour
     {
         SceneManager.LoadScene("Retry", LoadSceneMode.Additive);
     }
+    public void LoadLeaderboards(bool state)
+    {
+        if (state)
+        {
+            SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
+        } else {
+            SceneManager.UnloadSceneAsync(10);
+        }
+    }
     public void ReturnToMenu()
     {
         gameOver = false;
@@ -112,5 +121,9 @@ public class Scenemanager : MonoBehaviour
             yield return new WaitForSeconds(0.25f);
             Transition.Instance.SetState(1, "out");
         }
+    }
+    public bool IsGameOver()
+    {
+        return gameOver;
     }
 }

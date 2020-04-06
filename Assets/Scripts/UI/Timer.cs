@@ -48,7 +48,10 @@ public class Timer : MonoBehaviour
     }
     public void SceneChanged()
     {
-        StartCoroutine(NewScene());
+        if (!Scenemanager.Instance.IsGameOver())
+        {
+            StartCoroutine(NewScene());
+        }
     }
     public void StopTimer()
     {

@@ -6,7 +6,7 @@ public class DirtyHand : MonoBehaviour
     private GameObject target;
     private Vector3 targ;
 
-    private float speed = 500f;
+    private float speed = 1f;
     private float dist;
 
     [SerializeField]

@@ -38,4 +38,9 @@ public class DisplayHighscore : MonoBehaviour
             yield return new WaitForSeconds(10);
         }
     }
+
+    public void CloseLeaderboards()
+    {
+        Scenemanager.Instance.LoadLeaderboards(false);
+    }
 }

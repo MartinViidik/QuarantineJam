@@ -42,7 +42,7 @@ public class RetryController : MonoBehaviour
         ClearError();
         if (NameCheck.IsValid(input.text))
         {
-            Debug.Log("Successful");
+            Highscores.AddNewHighscore(input.text, Score.Instance.score);
             CloseSubmit();
             SubmitButton.SetActive(false);
         } else {

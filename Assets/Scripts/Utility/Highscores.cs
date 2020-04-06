@@ -21,11 +21,11 @@ public class Highscores : MonoBehaviour
         instance = this;
         highscoreDisplay = GetComponent<DisplayHighscore>();
     }
-    public static void AddNewHighscore(string username, int score)
+    public static void AddNewHighscore(string username, float score)
     {
         instance.StartCoroutine(instance.UploadNewHighscore(username, score));
     }
-    IEnumerator UploadNewHighscore(string username, int score)
+    IEnumerator UploadNewHighscore(string username, float score)
     {
         WWW www = new WWW(LeaderboardKey.webURL + LeaderboardKey.privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
         yield return www;

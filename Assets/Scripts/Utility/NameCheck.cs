@@ -1,18 +1,20 @@
 ﻿using System.Text.RegularExpressions;
-
+using System.IO;
 public static class NameCheck
 {
     private static string errorMessage;
-    public static bool IsValid(string input)
+    private static string input;
+    public static bool IsValid(string newInput)
     {
-        if(CheckLength(input, 4, 12) && CheckSpecialCharacters(input))
+        input = newInput;
+        if(CheckLength(1, 12) && CheckSpecialCharacters() && CheckProfanities())
         {
             return true;
         } else {
             return false;
         }
     }
-    static bool CheckLength(string input, int minLength, int maxLength)
+    static bool CheckLength(int minLength, int maxLength)
     {
         if(input.Length <= minLength)
         {
@@ -26,7 +28,7 @@ public static class NameCheck
         }
         return true;
     }
-    static bool CheckSpecialCharacters(string input)
+    static bool CheckSpecialCharacters()
     {
         if(Regex.IsMatch(input, ("[^a-zA-Z0-9_.]+")))
         {
@@ -35,6 +37,24 @@ public static class NameCheck
         } else {
             return true;
         }
+    }
+    static bool CheckProfanities()
+    {
+        string path = "Assets/Resources/ProfanityFilter/profanities.txt";
+
+        StreamReader reader = new StreamReader(path);
+        string i = input.ToLower();
+        while (reader.Peek() >= 0)
+        {
+            if(i.Contains(reader.ReadLine()))
+            {
+                errorMessage = "No profanities";
+                reader.Close();
+                return false;
+            }
+        }
+        reader.Close();
+        return true;
     }
     public static string SendError()
     {
