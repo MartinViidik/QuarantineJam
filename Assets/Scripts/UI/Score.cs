@@ -76,11 +76,15 @@ public class Score : MonoBehaviour
     }
     private IEnumerator FinalScoreCounter()
     {
-        int i = 0;
+        float i = 0;
         yield return new WaitForSeconds(1.5f);
         finalScoreText.SetActive(true);
         while (i != score)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                i = score;
+            }
             if (!ac.isPlaying)
             {
                 ac.PlayOneShot(countSFX);
