@@ -59,6 +59,10 @@ public class MainCamera : MonoBehaviour
                 grabTarget = hitCollider.gameObject;
                 hitCollider.GetComponent<Mask>().dragged = true;
             }
+            else if (hitCollider.gameObject.CompareTag("Crowd"))
+            {
+                hitCollider.GetComponent<Crowd>().DisperseCrowd();
+            }
         }
         if (Input.GetMouseButtonUp(0))
         {

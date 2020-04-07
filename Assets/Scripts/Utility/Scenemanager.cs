@@ -82,9 +82,9 @@ public class Scenemanager : MonoBehaviour
     {
         if (state)
         {
-            SceneManager.LoadSceneAsync(10, LoadSceneMode.Additive);
+            SceneManager.LoadSceneAsync("Leaderboards", LoadSceneMode.Additive);
         } else {
-            SceneManager.UnloadSceneAsync(10);
+            SceneManager.UnloadSceneAsync("Leaderboards");
         }
     }
     public void ReturnToMenu()

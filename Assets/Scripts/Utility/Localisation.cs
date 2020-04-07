@@ -8,7 +8,8 @@ public class Localisation : MonoBehaviour
         English = 0,
         Estonian = 1,
         Swedish = 2,
-        Dutch = 3
+        Dutch = 3,
+        Japanese = 4
     }
     public static Language language = Language.English;
 
@@ -16,6 +17,7 @@ public class Localisation : MonoBehaviour
     private static Dictionary<string, string> localisedEE;
     private static Dictionary<string, string> localisedSE;
     private static Dictionary<string, string> localisedNL;
+    private static Dictionary<string, string> localisedJP;
 
     public delegate void ButtonClick();
     public static event ButtonClick Click;
@@ -30,6 +32,7 @@ public class Localisation : MonoBehaviour
         localisedEE = csvLoader.GetDictionaryValues("ee");
         localisedSE = csvLoader.GetDictionaryValues("se");
         localisedNL = csvLoader.GetDictionaryValues("nl");
+        localisedJP = csvLoader.GetDictionaryValues("jp");
 
         isInit = true;
     }
@@ -51,6 +54,9 @@ public class Localisation : MonoBehaviour
                 break;
             case Language.Dutch:
                 localisedNL.TryGetValue(key, out value);
+                break;
+            case Language.Japanese:
+                localisedJP.TryGetValue(key, out value);
                 break;
         }
         return value;

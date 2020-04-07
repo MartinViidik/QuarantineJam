@@ -32,6 +32,5 @@ public class Mask : MonoBehaviour
     private void Awake()
     {
         initialPosition = transform.position;
-        Debug.Log(target.transform.position);
     }
 }

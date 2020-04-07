@@ -1152,7 +1152,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score_text: {fileID: 2063042522}
-  score: 0
   scoreIndicator: {fileID: 238454621}
   scoreIndicatortext: {fileID: 238454623}
   finalScoreText: {fileID: 1888334499}
@@ -1308,8 +1307,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b02fe67427332e6499c272d2210bd1b5, type: 2}
+  m_sharedMaterial: {fileID: 3141799074703211853, guid: b02fe67427332e6499c272d2210bd1b5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1437,6 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cefdda256f836740bfbaae7686ec8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  field: {fileID: 0}
   key: 
 --- !u!1 &1877426465
 GameObject:
@@ -1639,6 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cefdda256f836740bfbaae7686ec8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  field: {fileID: 0}
   key: finalscore
 --- !u!1 &2013706647
 GameObject:

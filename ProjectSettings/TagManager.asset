@@ -10,6 +10,7 @@ TagManager:
   - Cart
   - Person
   - Mask
+  - Crowd
   layers:
   - Default
   - TransparentFX
