@@ -38,6 +38,10 @@ public class CrowdController : MonoBehaviour
         {
             Instantiate(pickCrowd(), SpawnPoints[i]);
         }
+        if(activeGroupCrowds == 0)
+        {
+            PurgeChildren();
+        }
     }
     public void ReduceActiveGroupAmount()
     {
@@ -53,15 +57,15 @@ public class CrowdController : MonoBehaviour
         {
             if(SpawnPoints[i].childCount > 0)
             {
-                Destroy(SpawnPoints[i].GetChild(0).gameObject);
+                SpawnPoints[i].GetChild(0).GetComponent<Crowd>().Disappear();
             }
         }
     }
     private IEnumerator CrowdsCoroutine()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(0.25f);
         PurgeChildren();
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(2f);
         SpawnCrowds();
     }
     private IEnumerator InitialDelay()

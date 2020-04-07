@@ -6,9 +6,14 @@ public class Crowd : MonoBehaviour
     private CrowdController controller;
     [SerializeField]
     private Sprite[] crowdSprites;
+    [SerializeField]
+    private GameObject[] crowdItems;
+
+    private Animator anim;
     private void Awake()
     {
         controller = gameObject.GetComponentInParent(typeof(CrowdController)) as CrowdController;
+        anim = GetComponent<Animator>();
         SetSprites();
     }
     public void DisperseCrowd()
@@ -16,19 +21,19 @@ public class Crowd : MonoBehaviour
         if (single)
         {
             Score.Instance.UpdateScore(-10,Input.mousePosition, true);
-            Destroy(gameObject, 0.25f);
+            Disappear();
         } else
         {
             Score.Instance.UpdateScore(10, Input.mousePosition, true);
-            Destroy(gameObject, 0.25f);
+            Disappear();
             controller.ReduceActiveGroupAmount();
         }
     }
     void SetSprites()
     {
-        foreach (Transform child in transform)
+        for(int i = 0; i <crowdItems.Length; i++)
         {
-            SpriteRenderer childSprite = child.GetComponent<SpriteRenderer>();
+            SpriteRenderer childSprite = crowdItems[i].GetComponent<SpriteRenderer>();
             childSprite.sprite = crowdSprites[Random.Range(0, crowdSprites.Length)];
             childSprite.flipX = RNG();
         }
@@ -42,5 +47,10 @@ public class Crowd : MonoBehaviour
         } else {
             return false;
         }
+    }
+    public void Disappear()
+    {
+        anim.SetBool("Disappear", true);
+        Destroy(gameObject, 0.75f);
     }
 }
