@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Collections;
+using DG.Tweening;
 
 public class Score : MonoBehaviour
 {
@@ -56,6 +57,14 @@ public class Score : MonoBehaviour
         } else {
             ac.PlayOneShot(negativeSFX);
         }
+        if(amount > 0)
+        {
+            StartCoroutine("TurnColor", Color.green);
+            score_text.transform.DOShakeScale(0.1F, 0.5F, 2, 0, true);
+        } else {
+            StartCoroutine("TurnColor",Color.red);
+            score_text.transform.DOShakeScale(0.1F, -0.5F, 2, 0, true);
+        }
         SetIndicatorText(amount);
         _score += amount;
         score_text.text = _score.ToString();
@@ -72,6 +81,7 @@ public class Score : MonoBehaviour
             } else {
                 scoreIndicator.transform.localPosition = InputPosition;
             }
+            scoreIndicatortext.transform.DOPunchScale(new Vector3(1.15f,1.15f), 0.25f, 2, 0);
         }
     }
     private IEnumerator FinalScoreCounter()
@@ -126,5 +136,12 @@ public class Score : MonoBehaviour
             scoreIndicatortext.text = "-" + amount.ToString();
             scoreIndicatortext.color = Color.red;
         }
+    }
+
+    private IEnumerator TurnColor(Color color)
+    {
+        score_text.DOColor(color, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        score_text.DOColor(Color.white, 0.1f);
     }
 }

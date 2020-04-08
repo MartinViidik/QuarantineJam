@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class Timer : MonoBehaviour
 {
@@ -28,12 +29,23 @@ public class Timer : MonoBehaviour
         counting = true;
         currCountdownValue = countdownValue;
         GameController.Instance.IncreaseTempo(0.025f);
+        timer_text.DOFade(1, 0.5f);
         while (currCountdownValue >= 0)
         {
             yield return new WaitForSeconds(1.0f);
             currCountdownValue--;
+            timer_text.transform.DOShakeScale(0.1F, 0.5F, 2, 0, true);
+            if(currCountdownValue == 3)
+            {
+                timer_text.DOColor(Color.red, 0.5f);
+            }
+            if(currCountdownValue == 0)
+            {
+                timer_text.DOFade(0.0f, 0.75f);
+            }
         }
         StartCoroutine(StopCountdown());
+        timer_text.DOColor(Color.white, 0.1f);
         counting = false;
     }
     public IEnumerator StopCountdown()
