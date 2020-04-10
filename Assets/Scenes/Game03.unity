@@ -234,10 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403259f363d0c2d4ba74c4d0038fbf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selected: 0
-  inputPOS: {x: 0, y: 0, z: 0}
   anim: {fileID: 1327508482}
   foam: {fileID: 494924190}
+  inputPOS: {x: 0, y: 0, z: 0}
 --- !u!61 &77068642
 BoxCollider2D:
   m_ObjectHideFlags: 0
