@@ -19,17 +19,26 @@ public class RetryController : MonoBehaviour
 
     [SerializeField]
     private GameObject SubmitButton;
+
+    private MenuSound sound;
+    private void Awake()
+    {
+        sound = GetComponent<MenuSound>();
+    }
     public void ReturnToMenu()
     {
+        sound.PlayConfirmSound();
         Scenemanager.Instance.ReturnToMenu();
         canvas.gameObject.SetActive(false);
     }
     public void ShowSubmit()
     {
+        sound.PlayConfirmSound();
         SetSubmitState(true);
     }
     public void CloseSubmit()
     {
+        sound.PlayConfirmSound();
         ClearInput();
         SetSubmitState(false);
     }

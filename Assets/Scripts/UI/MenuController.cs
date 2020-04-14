@@ -11,16 +11,20 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject credits;
 
-    [SerializeField]
-    private AudioClip confirmSFX;
+    private MenuSound sound;
 
-    private AudioSource ac;
+    private void Awake()
+    {
+        sound = GetComponent<MenuSound>();
+    }
+
     public void OnEnable()
     {
         LoadMenu();
     }
     public void PlayGame()
     {
+        sound.PlayConfirmSound();
         menuButtons.SetActive(false);
         title.SetActive(false);
         credits.SetActive(false);
@@ -28,12 +32,14 @@ public class MenuController : MonoBehaviour
     }
     public void LoadMenu()
     {
+        sound.PlayConfirmSound();
         menuButtons.SetActive(true);
         title.SetActive(true);
         credits.SetActive(true);
     }
     public void LoadLeaderboards(bool state)
     {
+        sound.PlayConfirmSound();
         Scenemanager.Instance.LoadLeaderboards(state);
     }
 }

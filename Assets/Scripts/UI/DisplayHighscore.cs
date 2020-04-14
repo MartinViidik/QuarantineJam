@@ -12,6 +12,13 @@ public class DisplayHighscore : MonoBehaviour
 
     private Highscores highscoreManager;
 
+    private MenuSound sound;
+
+    private void Awake()
+    {
+        sound = GetComponent<MenuSound>();
+    }
+
     void Start()
     {
         loading.gameObject.SetActive(true);
@@ -41,6 +48,7 @@ public class DisplayHighscore : MonoBehaviour
 
     public void CloseLeaderboards()
     {
+        sound.PlayConfirmSound();
         Scenemanager.Instance.LoadLeaderboards(false);
     }
 }

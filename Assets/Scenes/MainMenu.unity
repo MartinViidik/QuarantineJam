@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 3
+  controller: {fileID: 199676207}
 --- !u!114 &59840552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openWindow: {fileID: 192363339}
   restoreWindow: {fileID: 1676756148}
+  controller: {fileID: 199676207}
 --- !u!1 &176000055
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +847,9 @@ GameObject:
   - component: {fileID: 199676210}
   - component: {fileID: 199676209}
   - component: {fileID: 199676208}
+  - component: {fileID: 199676213}
+  - component: {fileID: 199676212}
+  - component: {fileID: 199676214}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -934,6 +939,130 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &199676212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199676207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5f060abb173d684696e0822c04e908f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmSFX: {fileID: 8300000, guid: ebd692b10c1fbab4386e3d7ef3b8493e, type: 3}
+--- !u!114 &199676213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199676207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdaac959d366c294c9bc804a04feef89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuButtons: {fileID: 1021530272}
+  title: {fileID: 937748495}
+  credits: {fileID: 1754494404}
+--- !u!82 &199676214
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199676207}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &216228185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 4
+  controller: {fileID: 199676207}
 --- !u!114 &254622973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2688,6 +2818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 2
+  controller: {fileID: 199676207}
 --- !u!114 &648338986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,6 +3029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openWindow: {fileID: 1676756148}
   restoreWindow: {fileID: 1088331737}
+  controller: {fileID: 199676207}
 --- !u!114 &700896326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,6 +3264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openWindow: {fileID: 192363339}
   restoreWindow: {fileID: 1088331737}
+  controller: {fileID: 199676207}
 --- !u!1 &747993442
 GameObject:
   m_ObjectHideFlags: 0
@@ -5195,8 +5328,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1088331738}
-  - component: {fileID: 1088331739}
-  - component: {fileID: 1088331740}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -5221,118 +5352,6 @@ Transform:
   m_Father: {fileID: 199676211}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1088331739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088331737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdaac959d366c294c9bc804a04feef89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuButtons: {fileID: 1021530272}
-  title: {fileID: 937748495}
-  credits: {fileID: 1754494404}
-  confirmSFX: {fileID: 8300000, guid: ebd692b10c1fbab4386e3d7ef3b8493e, type: 3}
---- !u!82 &1088331740
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088331737}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1099839446
 GameObject:
   m_ObjectHideFlags: 0
@@ -6900,6 +6919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 1
+  controller: {fileID: 199676207}
 --- !u!114 &1589140719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7098,6 +7118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openWindow: {fileID: 1676756148}
   restoreWindow: {fileID: 1088331737}
+  controller: {fileID: 199676207}
 --- !u!114 &1646828342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7141,7 +7162,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1088331739}
+      - m_Target: {fileID: 199676213}
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -7412,6 +7433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openWindow: {fileID: 1676756148}
   restoreWindow: {fileID: 1088331737}
+  controller: {fileID: 199676207}
 --- !u!114 &1701784757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7933,6 +7955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  controller: {fileID: 199676207}
 --- !u!114 &1859850426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8659,7 +8682,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1088331739}
+      - m_Target: {fileID: 199676213}
         m_MethodName: LoadLeaderboards
         m_Mode: 6
         m_Arguments:
