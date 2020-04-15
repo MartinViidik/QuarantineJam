@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class Scenemanager : MonoBehaviour
 {
     private static Scenemanager _instance;
@@ -89,6 +88,7 @@ public class Scenemanager : MonoBehaviour
     }
     public void ReturnToMenu()
     {
+        GameController.Instance.SetTempo(1);
         gameOver = false;
         sceneIndex = 2;
         SceneManager.LoadScene("Main", LoadSceneMode.Single);

@@ -64,6 +64,7 @@ public class Score : MonoBehaviour
         } else {
             StartCoroutine("TurnColor",Color.red);
             score_text.transform.DOShakeScale(0.1F, -0.5F, 2, 0, true);
+            GameController.Instance.Vibrate();
         }
         SetIndicatorText(amount);
         _score += amount;

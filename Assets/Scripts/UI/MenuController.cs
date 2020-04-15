@@ -83,4 +83,13 @@ public class MenuController : MonoBehaviour
         credits.transform.DOScale(0, 0.25f);
         title.transform.DOScale(0, 0.25f);
     }
+    public void SetQualityLevel(int setting)
+    {
+        sound.PlayConfirmSound();
+        QualitySettings.SetQualityLevel(setting, true);
+    }
+    public void SetRumble(bool state)
+    {
+        GameController.Instance.SetRumble(state);
+    }
 }

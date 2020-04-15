@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    private int timerLength;
+    private int timerLength = 4;
 
     [SerializeField]
     private TMP_Text timer_text;

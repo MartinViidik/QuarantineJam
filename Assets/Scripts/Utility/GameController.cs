@@ -3,6 +3,7 @@
 public class GameController : MonoBehaviour
 {
     private static GameController _instance;
+    private bool rumble = true;
     public static GameController Instance
     {
         get { return _instance; }
@@ -30,5 +31,18 @@ public class GameController : MonoBehaviour
     public void IncreaseTempo(float amount)
     {
         ac.pitch += amount;
+    }
+
+    public void Vibrate()
+    {
+        if (rumble)
+        {
+            Handheld.Vibrate();
+            Debug.Log("Vibrating");
+        }
+    }
+    public void SetRumble(bool state)
+    {
+        rumble = state;
     }
 }
