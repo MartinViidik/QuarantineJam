@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
     {
         if (rumble)
         {
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
             Debug.Log("Vibrating");
         }
     }
