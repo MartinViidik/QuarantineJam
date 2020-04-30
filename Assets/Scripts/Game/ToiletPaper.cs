@@ -16,6 +16,7 @@ public class ToiletPaper : MonoBehaviour
         float x = inputPOS.x;
         gameObject.SetActive(true);
         transform.localPosition = new Vector3(x, -6, 0);
+        CurrentState.tp++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

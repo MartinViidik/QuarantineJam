@@ -32,7 +32,6 @@ public class GameController : MonoBehaviour
     {
         ac.pitch += amount;
     }
-
     public void Vibrate()
     {
         if (rumble)
@@ -44,5 +43,13 @@ public class GameController : MonoBehaviour
     public void SetRumble(bool state)
     {
         rumble = state;
+    }
+    public void SetHighestScore(float score)
+    {
+        if (score > CurrentState.highscore)
+        {
+            CurrentState.highscore = score;
+            SaveLoad.Instance.SaveFile();
+        }
     }
 }

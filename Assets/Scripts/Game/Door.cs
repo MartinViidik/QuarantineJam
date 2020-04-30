@@ -34,6 +34,7 @@ public class Door : MonoBehaviour
     }
     public void SelectDoor()
     {
+        CurrentState.house++;
         Score.Instance.UpdateScore(10, Input.mousePosition, true);
         CloseDoor();
     }

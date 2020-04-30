@@ -111,6 +111,8 @@ public class Score : MonoBehaviour
                 finalScore.text = i.ToString();
             }
         }
+        GameController.Instance.SetHighestScore(score);
+        SaveLoad.Instance.SaveFile();
         ac.Stop();
         Scenemanager.Instance.LoadRetry();
     }

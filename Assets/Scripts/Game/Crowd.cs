@@ -24,6 +24,7 @@ public class Crowd : MonoBehaviour
             Disappear();
         } else
         {
+            CurrentState.crowds++;
             Score.Instance.UpdateScore(10, Input.mousePosition, true);
             Disappear();
             controller.ReduceActiveGroupAmount();
