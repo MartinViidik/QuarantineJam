@@ -51,25 +51,32 @@ public class Score : MonoBehaviour
     }
     public void UpdateScore(float amount, Vector3 inputPosition, bool mouse)
     {
-        if(amount >= 0)
+        if(Timer.Instance.CountdownValue() >= 0)
         {
-            ac.PlayOneShot(scoreSFX);
-        } else {
-            ac.PlayOneShot(negativeSFX);
+            if (amount >= 0)
+            {
+                ac.PlayOneShot(scoreSFX);
+            }
+            else
+            {
+                ac.PlayOneShot(negativeSFX);
+            }
+            if (amount > 0)
+            {
+                StartCoroutine("TurnColor", Color.green);
+                score_text.transform.DOShakeScale(0.1F, 0.5F, 2, 0, true);
+            }
+            else
+            {
+                StartCoroutine("TurnColor", Color.red);
+                score_text.transform.DOShakeScale(0.1F, -0.5F, 2, 0, true);
+                GameController.Instance.Vibrate();
+            }
+            SetIndicatorText(amount);
+            _score += amount;
+            score_text.text = _score.ToString();
+            ShowIndicator(inputPosition, mouse);
         }
-        if(amount > 0)
-        {
-            StartCoroutine("TurnColor", Color.green);
-            score_text.transform.DOShakeScale(0.1F, 0.5F, 2, 0, true);
-        } else {
-            StartCoroutine("TurnColor",Color.red);
-            score_text.transform.DOShakeScale(0.1F, -0.5F, 2, 0, true);
-            GameController.Instance.Vibrate();
-        }
-        SetIndicatorText(amount);
-        _score += amount;
-        score_text.text = _score.ToString();
-        ShowIndicator(inputPosition, mouse);
     }
     public void ShowIndicator(Vector3 InputPosition, bool mouse)
     {

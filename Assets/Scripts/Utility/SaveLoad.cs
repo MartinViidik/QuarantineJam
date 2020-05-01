@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -55,6 +55,18 @@ public class SaveLoad : MonoBehaviour
         GameState data = (GameState)bf.Deserialize(file);
         SetState(data);
         file.Close();
+    }
+
+    public void DeleteFile()
+    {
+        try
+        {
+            File.Delete(Application.persistentDataPath + "/save.dat");
+        }
+        catch (Exception ex)
+        {
+            Debug.LogException(ex);
+        }
     }
 
     void SetState(GameState data)

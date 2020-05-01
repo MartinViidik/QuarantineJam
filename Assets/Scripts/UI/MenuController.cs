@@ -16,6 +16,9 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject credits;
 
+    [SerializeField]
+    private GameObject stats;
+
     private MenuSound sound;
 
     private void Awake()
@@ -47,10 +50,17 @@ public class MenuController : MonoBehaviour
         SetScaleToZero(settings);
         settings.transform.DOScale(1, 0.2f);
     }
-    public void ReturnMenu()
+    public void Stats()
     {
         sound.PlayConfirmSound();
-        settings.transform.DOScale(0, 0.2f);
+        stats.SetActive(true);
+        SetScaleToZero(stats);
+        stats.transform.DOScale(1, 0.2f);
+    }
+    public void ReturnMenu(GameObject target)
+    {
+        sound.PlayConfirmSound();
+        target.transform.DOScale(0, 0.2f);
     }
     public void LoadMenu()
     {

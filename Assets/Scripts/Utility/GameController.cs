@@ -52,4 +52,14 @@ public class GameController : MonoBehaviour
             SaveLoad.Instance.SaveFile();
         }
     }
+    public void ClearState()
+    {
+        CurrentState.highscore = 0;
+        CurrentState.face = 0;
+        CurrentState.house = 0;
+        CurrentState.masks = 0;
+        CurrentState.crowds = 0;
+        CurrentState.tp = 0;
+        SaveLoad.Instance.DeleteFile();
+    }
 }

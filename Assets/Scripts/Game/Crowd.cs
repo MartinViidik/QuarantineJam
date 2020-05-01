@@ -21,11 +21,13 @@ public class Crowd : MonoBehaviour
         if (single)
         {
             Score.Instance.UpdateScore(-10,Input.mousePosition, true);
+            DisableCollisions();
             Disappear();
         } else
         {
             CurrentState.crowds++;
             Score.Instance.UpdateScore(10, Input.mousePosition, true);
+            DisableCollisions();
             Disappear();
             controller.ReduceActiveGroupAmount();
         }
@@ -53,5 +55,9 @@ public class Crowd : MonoBehaviour
     {
         anim.SetBool("Disappear", true);
         Destroy(gameObject, 0.75f);
+    }
+    void DisableCollisions()
+    {
+        gameObject.GetComponent<Collider2D>().enabled = false;
     }
 }
