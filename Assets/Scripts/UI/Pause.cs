@@ -10,6 +10,7 @@ public class Pause : MonoBehaviour
     {
         transform.DOScale(1, 0.5f);
     }
+
     public void PauseGame()
     {
         if (Time.timeScale == 1.0f)
