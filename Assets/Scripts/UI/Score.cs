@@ -97,6 +97,7 @@ public class Score : MonoBehaviour
         float i = 0;
         yield return new WaitForSeconds(1.5f);
         finalScoreText.SetActive(true);
+        finalScore.transform.DOScale(1, 0.35f);
         while (i != score)
         {
             if (Input.GetMouseButtonDown(0))
@@ -147,7 +148,6 @@ public class Score : MonoBehaviour
             scoreIndicatortext.color = Color.red;
         }
     }
-
     private IEnumerator TurnColor(Color color)
     {
         score_text.DOColor(color, 0.1f);

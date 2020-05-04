@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -20,6 +22,11 @@ public class MenuController : MonoBehaviour
     private GameObject stats;
 
     private MenuSound sound;
+
+    [SerializeField]
+    private Button GraphicsSettings;
+    [SerializeField]
+    private Button RumbleSettings;
 
     private void Awake()
     {
@@ -95,11 +102,32 @@ public class MenuController : MonoBehaviour
     }
     public void SetQualityLevel(int setting)
     {
+        if(GraphicsSettings != null)
+        {
+            GraphicsSettings.interactable = true;
+        }
+        GraphicsSettings = GetButton();
+        ToggleButton(GraphicsSettings);
         sound.PlayConfirmSound();
         QualitySettings.SetQualityLevel(setting, true);
     }
     public void SetRumble(bool state)
     {
+        if (RumbleSettings != null)
+        {
+            RumbleSettings.interactable = true;
+        }
+        RumbleSettings = GetButton();
+        ToggleButton(RumbleSettings);
         GameController.Instance.SetRumble(state);
+    }
+    void ToggleButton(Button button)
+    {
+        button.interactable = false;
+    }
+
+    Button GetButton()
+    {
+        return EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
     }
 }

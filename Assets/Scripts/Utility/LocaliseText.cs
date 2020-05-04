@@ -17,12 +17,17 @@ public class LocaliseText : MonoBehaviour
     {
         return Localisation.GetLocalisedValue(key);
     }
-    void UpdateText()
+    public void UpdateText()
     {
         field.text = GetLocalisation();
     }
     private void OnEnable()
     {
         Localisation.Click += UpdateText;
+    }
+    public void UpdateError(string error)
+    {
+        key = error;
+        UpdateText();
     }
 }
