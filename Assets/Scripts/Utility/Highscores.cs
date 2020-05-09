@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class Highscores : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class Highscores : MonoBehaviour
     }
     IEnumerator UploadNewHighscore(string username, float score)
     {
-        WWW www = new WWW(LeaderboardKey.webURL + LeaderboardKey.privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        UnityWebRequest www = new UnityWebRequest(LeaderboardKey.webURL + LeaderboardKey.privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
         yield return www;
         if (string.IsNullOrEmpty(www.error))
         {
@@ -44,11 +45,12 @@ public class Highscores : MonoBehaviour
     }
     IEnumerator FetchHighscores()
     {
-        WWW www = new WWW(LeaderboardKey.webURL + LeaderboardKey.publicCode + "/pipe/");
-        yield return www;
+        UnityWebRequest www = new UnityWebRequest(LeaderboardKey.webURL + LeaderboardKey.publicCode + "/pipe/");
+        www.downloadHandler = new DownloadHandlerBuffer();
+        yield return www.SendWebRequest();
         if (string.IsNullOrEmpty(www.error))
         {
-            FormatHighscores(www.text);
+            FormatHighscores(www.downloadHandler.text);
             highscoreDisplay.OnHighscoresFetched(highscoresList);
         }
         else

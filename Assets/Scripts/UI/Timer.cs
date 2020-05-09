@@ -6,13 +6,28 @@ using DG.Tweening;
 public class Timer : MonoBehaviour
 {
     [SerializeField]
-    private int timerLength;
+    private int timerLength = 4;
 
     [SerializeField]
     private TMP_Text timer_text;
 
     private float currCountdownValue;
     private bool counting;
+    private static Timer _instance;
+    public static Timer Instance
+    {
+        get { return _instance; }
+    }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        _instance = this;
+    }
     private void Update()
     {
         if (!counting)
@@ -69,5 +84,9 @@ public class Timer : MonoBehaviour
     {
         StopAllCoroutines();
         counting = false;
+    }
+    public float CountdownValue()
+    {
+        return currCountdownValue;
     }
 }

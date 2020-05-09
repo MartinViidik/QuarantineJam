@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
@@ -16,7 +18,15 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private GameObject credits;
 
+    [SerializeField]
+    private GameObject stats;
+
     private MenuSound sound;
+
+    [SerializeField]
+    private Button GraphicsSettings;
+    [SerializeField]
+    private Button RumbleSettings;
 
     private void Awake()
     {
@@ -47,10 +57,17 @@ public class MenuController : MonoBehaviour
         SetScaleToZero(settings);
         settings.transform.DOScale(1, 0.2f);
     }
-    public void ReturnMenu()
+    public void Stats()
     {
         sound.PlayConfirmSound();
-        settings.transform.DOScale(0, 0.2f);
+        stats.SetActive(true);
+        SetScaleToZero(stats);
+        stats.transform.DOScale(1, 0.2f);
+    }
+    public void ReturnMenu(GameObject target)
+    {
+        sound.PlayConfirmSound();
+        target.transform.DOScale(0, 0.2f);
     }
     public void LoadMenu()
     {
@@ -82,5 +99,35 @@ public class MenuController : MonoBehaviour
         menuButtons.transform.DOScale(0, 0.25f);
         credits.transform.DOScale(0, 0.25f);
         title.transform.DOScale(0, 0.25f);
+    }
+    public void SetQualityLevel(int setting)
+    {
+        if(GraphicsSettings != null)
+        {
+            GraphicsSettings.interactable = true;
+        }
+        GraphicsSettings = GetButton();
+        ToggleButton(GraphicsSettings);
+        sound.PlayConfirmSound();
+        QualitySettings.SetQualityLevel(setting, true);
+    }
+    public void SetRumble(bool state)
+    {
+        if (RumbleSettings != null)
+        {
+            RumbleSettings.interactable = true;
+        }
+        RumbleSettings = GetButton();
+        ToggleButton(RumbleSettings);
+        GameController.Instance.SetRumble(state);
+    }
+    void ToggleButton(Button button)
+    {
+        button.interactable = false;
+    }
+
+    Button GetButton()
+    {
+        return EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
     }
 }

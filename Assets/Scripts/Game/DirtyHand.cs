@@ -21,6 +21,7 @@ public class DirtyHand : MonoBehaviour
         if (dist <= 1)
         {
             Score.Instance.UpdateScore(-25, transform.localPosition, false);
+            CurrentState.face++;
             dirtyController.PlaySound();
             gameObject.SetActive(false);
         }

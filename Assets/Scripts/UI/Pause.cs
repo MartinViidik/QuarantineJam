@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 public class Pause : MonoBehaviour
 {
     [SerializeField]
     private GameObject pausedGraphic;
+
+    private void Awake()
+    {
+        transform.DOScale(1, 0.5f);
+    }
+
     public void PauseGame()
     {
         if (Time.timeScale == 1.0f)

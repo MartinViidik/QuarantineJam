@@ -25,6 +25,7 @@ public class Mask : MonoBehaviour
                 target.GetComponent<VisualMask>().MaskFadeIn();
                 person.GetComponent<MaskPerson>().SetToEndState();
                 Score.Instance.UpdateScore(10, transform.position, false);
+                CurrentState.masks++;
                 transform.position = initialPosition;
             }
         }

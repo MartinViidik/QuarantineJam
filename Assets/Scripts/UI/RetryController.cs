@@ -15,7 +15,7 @@ public class RetryController : MonoBehaviour
     private InputField input;
 
     [SerializeField]
-    private TMP_Text errorMessage;
+    private GameObject errorMessage;
 
     [SerializeField]
     private GameObject SubmitButton;
@@ -62,11 +62,11 @@ public class RetryController : MonoBehaviour
 
     private void UpdateError(string error)
     {
-        errorMessage.text = error;
+        errorMessage.GetComponent<LocaliseText>().UpdateError(error);
     }
     private void ClearError()
     {
-        errorMessage.text = "";
+        errorMessage.gameObject.GetComponent<TMP_Text>().text = "";
     }
     private void ClearInput()
     {

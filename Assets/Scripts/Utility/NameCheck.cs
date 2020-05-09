@@ -18,12 +18,12 @@ public static class NameCheck
     {
         if(input.Length <= minLength)
         {
-            errorMessage = "Not long enough";
+            errorMessage = "notlongenough";
             return false;
         }
         if(input.Length >= maxLength)
         {
-            errorMessage = "Too long";
+            errorMessage = "toolong";
             return false;
         }
         return true;
@@ -32,7 +32,7 @@ public static class NameCheck
     {
         if(Regex.IsMatch(input, ("[^a-zA-Z0-9_.]+")))
         {
-            errorMessage = "No special characters";
+            errorMessage = "nospecialcharacters";
             return false;
         } else {
             return true;
@@ -48,7 +48,7 @@ public static class NameCheck
         {
             if(i.Contains(reader.ReadLine()))
             {
-                errorMessage = "No profanities";
+                errorMessage = "noprofanities";
                 reader.Close();
                 return false;
             }
