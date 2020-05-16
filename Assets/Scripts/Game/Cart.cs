@@ -81,7 +81,6 @@ public class Cart : MonoBehaviour
             return false;
         }
     }
-
     public void ActivateCarts(bool state)
     {
         activated = state;

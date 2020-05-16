@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Networking;
-
 public class Highscores : MonoBehaviour
 {
     [SerializeField]
@@ -28,13 +26,14 @@ public class Highscores : MonoBehaviour
     }
     IEnumerator UploadNewHighscore(string username, float score)
     {
-        UnityWebRequest www = new UnityWebRequest(LeaderboardKey.webURL + LeaderboardKey.privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
+        WWW www = new WWW(LeaderboardKey.webURL + LeaderboardKey.privateCode + "/add/" + WWW.EscapeURL(username) + "/" + score);
         yield return www;
         if (string.IsNullOrEmpty(www.error))
         {
             Debug.Log("Upload successful");
             DownloadHighscores();
-        } else
+        }
+        else
         {
             Debug.Log("Error uploading: " + www.error);
         }
@@ -45,12 +44,11 @@ public class Highscores : MonoBehaviour
     }
     IEnumerator FetchHighscores()
     {
-        UnityWebRequest www = new UnityWebRequest(LeaderboardKey.webURL + LeaderboardKey.publicCode + "/pipe/");
-        www.downloadHandler = new DownloadHandlerBuffer();
-        yield return www.SendWebRequest();
+        WWW www = new WWW(LeaderboardKey.webURL + LeaderboardKey.publicCode + "/pipe/");
+        yield return www;
         if (string.IsNullOrEmpty(www.error))
         {
-            FormatHighscores(www.downloadHandler.text);
+            FormatHighscores(www.text);
             highscoreDisplay.OnHighscoresFetched(highscoresList);
         }
         else
@@ -62,7 +60,7 @@ public class Highscores : MonoBehaviour
     {
         string[] entries = textStream.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
         highscoresList = new Highscore[entries.Length];
-        for(int i = 0; i < entries.Length; i++)
+        for (int i = 0; i < entries.Length; i++)
         {
             string[] entryInfo = entries[i].Split(new char[] { '|' });
             string username = entryInfo[0];

@@ -144,7 +144,7 @@ public class Score : MonoBehaviour
             scoreIndicatortext.text = "+" + amount.ToString();
             scoreIndicatortext.color = Color.white;
         } else {
-            scoreIndicatortext.text = "-" + amount.ToString();
+            scoreIndicatortext.text = amount.ToString();
             scoreIndicatortext.color = Color.red;
         }
     }
